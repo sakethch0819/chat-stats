@@ -3,7 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Analyze your WhatsApp chat export privately in your browser.">
+<meta name="description" content="Upload a WhatsApp chat export and see who texts more, who starts conversations and who replies fastest. Private: it runs entirely in your browser.">
+<meta name="theme-color" content="#00a6fb">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2300a6fb'/%3E%3Cpath d='M26 16a10 10 0 0 1-14.5 8.9L6 26.5l1.7-5.5A10 10 0 1 1 26 16z' fill='none' stroke='%2300192b' stroke-width='2.6' stroke-linejoin='round'/%3E%3Cpath d='M12 15h8M12 19h5' stroke='%2300192b' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="canonical" href="https://sakethch0819.github.io/chat-stats/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Chat Receipts">
+<meta property="og:title" content="Chat Receipts: who really carries the chat?">
+<meta property="og:description" content="Upload a WhatsApp chat export and see who texts more, who starts conversations and who replies fastest. Private: it runs entirely in your browser.">
+<meta property="og:url" content="https://sakethch0819.github.io/chat-stats/">
+<meta property="og:image" content="https://sakethch0819.github.io/chat-stats/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chat Receipts: who really carries the chat?">
+<meta name="twitter:description" content="Upload a WhatsApp chat export and see who texts more, who starts conversations and who replies fastest. Private: it runs entirely in your browser.">
+<meta name="twitter:image" content="https://sakethch0819.github.io/chat-stats/og.png">
 <title>Chat Receipts</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,6 +55,9 @@ https://github.com/nodeca/pako/blob/main/LICENSE
   --f-mono:"Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0}
+img{max-width:100%}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body);padding-inline:16px;padding-block:0 56px;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1120px;margin:0 auto}
@@ -151,6 +169,7 @@ a{color:var(--brand-deep)}
 .res-bar .file span{font-size:.8rem;color:var(--ink-2)}
 .res-actions{display:flex;gap:8px;flex-wrap:wrap}
 .res-actions .btn{min-height:38px;padding:0 14px;font-size:.9rem}
+@media (max-width:640px){.hide-sm{display:none}.res-bar .wrap{gap:8px}.res-actions{width:100%}.res-actions .btn{padding:0 12px;font-size:.85rem}.res-actions #shareBar{margin-left:auto}.res-bar .file b{max-width:90vw}}
 .res-body{display:flex;flex-direction:column;gap:44px;padding-top:28px}
 .example-banner{background:var(--warn-soft);color:#5c3a00;border-radius:12px;padding:12px 16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;font-size:.92rem}
 .example-banner b{font-weight:600}
@@ -232,6 +251,44 @@ details .inner ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column
 .daily tr.peak td{background:var(--brand-tint)}
 .empty{color:var(--ink-3);font-size:.9rem}
 footer.foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;color:var(--ink-3);font-size:.82rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+/* results headline */
+.headline{display:flex;flex-direction:column;gap:18px}
+.headline h1{font-size:clamp(1.8rem,4.6vw,3rem);line-height:1.08;letter-spacing:-.04em;font-weight:800;max-width:22ch}
+.headline h1 em{font-style:normal;color:var(--brand-deep)}
+.headline .lead{font-size:1.08rem;color:var(--ink-2);max-width:60ch}
+.headline .lead b{color:var(--ink);font-weight:600}
+.head-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.periods{display:flex;flex-wrap:wrap;gap:6px}
+.periods button{border:1px solid var(--line-2);background:#fff;border-radius:999px;padding:6px 14px;font-size:.88rem;font-weight:500;cursor:pointer;color:var(--ink-2)}
+.periods button[aria-pressed="true"]{background:var(--brand-ink);border-color:var(--brand-ink);color:#fff}
+.periods button:hover:not([aria-pressed="true"]){background:var(--bg-2)}
+.story{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:12px}
+@media (max-width:760px){.story{grid-template-columns:1fr}}
+.storycard{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.storycard blockquote{margin:0;font-size:1.25rem;line-height:1.35;font-weight:600;letter-spacing:-.015em;overflow-wrap:anywhere}
+.storycard .big{font-size:1.9rem;font-weight:700;letter-spacing:-.03em;line-height:1}
+.storycard .meta{font-size:.86rem;color:var(--ink-2);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+
+/* share modal */
+.modal{position:fixed;inset:0;z-index:60;background:rgba(0,25,43,.55);backdrop-filter:blur(4px);display:grid;place-items:center;padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+.sheet{background:#fff;border-radius:20px;box-shadow:0 30px 80px -20px rgba(0,25,43,.5);width:min(920px,100%);max-height:100%;overflow:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;padding:22px}
+@media (max-width:720px){.sheet{grid-template-columns:1fr;gap:16px;padding:16px}}
+.sheet img{width:100%;max-width:100%;border-radius:12px;display:block;box-shadow:var(--shadow);aspect-ratio:1080/1350;background:var(--brand-tint)}
+@media (max-width:720px){.sheet img{max-width:320px;margin:0 auto}}
+.sheet-side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.sheet{position:relative}
+.sheet-side .x{position:absolute;top:12px;right:12px;z-index:2;box-shadow:var(--shadow-sm);background:var(--bg-2);border:1px solid var(--line);border-radius:999px;width:36px;height:36px;cursor:pointer;display:grid;place-items:center}
+.sheet-side p{color:var(--ink-2);font-size:.9rem}
+.sheet-actions{display:flex;flex-direction:column;gap:8px}
+.sheet-actions .btn{width:100%}
+.sheet pre{margin:0;white-space:pre-wrap;background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:12px;font:13px/1.5 var(--f-mono);color:var(--ink-2);max-height:220px;overflow:auto}
+.toast{font-size:.85rem;color:var(--brand-deep);font-weight:600;min-height:1.2em}
+
+/* loading */
+.loading{position:fixed;inset:0;z-index:70;background:rgba(255,255,255,.86);backdrop-filter:blur(3px);display:grid;place-items:center}
+.loading .box{display:flex;flex-direction:column;align-items:center;gap:14px;font-weight:600}
+.spinner{width:40px;height:40px;border-radius:50%;border:4px solid var(--brand-tint-2);border-top-color:var(--brand);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -274,13 +331,13 @@ footer.foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;co
 
       <div class="preview" aria-label="Example of the results">
         <span class="tag">Example</span>
-        <div class="ph"><span class="av">T</span><div><b>Tom &amp; Jerry</b><small>6,219 messages since 2 Mar</small></div></div>
-        <div class="bub"><span class="k">Most messages</span><b>Jerry</b> sent 56.5% of all messages</div>
-        <div class="bub me"><span class="k">Fastest replier</span><b>Tom</b> replies in 2 min on average</div>
-        <div class="bub"><span class="k">Busiest day ever</span><b>188 messages</b> on Sat, 16 May
+        <div class="ph"><span class="av">T</span><div><b>Tom &amp; Jerry</b><small>6,120 messages since 4 Nov</small></div></div>
+        <div class="bub"><span class="k">Most messages</span><b>Jerry</b> sent 58.9% of all messages</div>
+        <div class="bub me"><span class="k">Fastest replier</span><b>Tom</b> usually replies within 2 min</div>
+        <div class="bub"><span class="k">Busiest day ever</span><b>104 messages</b> on Sun, 23 Nov
           <div class="minibars" aria-hidden="true"><i style="height:30%"></i><i style="height:45%"></i><i style="height:25%"></i><i style="height:55%"></i><i style="height:38%"></i><i class="hi" style="height:100%"></i><i style="height:42%"></i><i style="height:28%"></i><i style="height:50%"></i><i style="height:33%"></i></div>
         </div>
-        <div class="bub me"><span class="k">Night owl</span><b>Jerry</b> sends 20.7% of his texts after midnight</div>
+        <div class="bub me"><span class="k">Night owl</span><b>Jerry</b> sends 24.2% of his texts after midnight</div>
       </div>
     </div>
 
@@ -323,14 +380,36 @@ footer.foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;co
   </div>
 </div>
 
+<div class="loading" id="loading" hidden><div class="box"><span class="spinner" aria-hidden="true"></span><span id="loadingText">Reading your chat…</span></div></div>
+
+<div class="modal" id="shareModal" hidden role="dialog" aria-modal="true" aria-labelledby="shareTitle">
+  <div class="sheet">
+    <img id="shareImg" alt="Summary card of your chat results">
+    <div class="sheet-side">
+      <button class="x" id="shareClose" type="button" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <h2 id="shareTitle" style="font-size:1.5rem">Share your receipts</h2>
+      <p>Send the card to the chat, or paste the text version straight into WhatsApp. Only the summary is shared, never your messages.</p>
+      <div class="sheet-actions">
+        <button class="btn btn-primary" id="shareNative" type="button" hidden>Share image</button>
+        <a class="btn btn-ghost" id="shareDownload" download="chat-receipts.png" href="#">Save image</a>
+        <button class="btn btn-ghost" id="shareCopy" type="button">Copy text for WhatsApp</button>
+      </div>
+      <div class="toast" id="shareToast" aria-live="polite"></div>
+      <p style="font-size:.8rem">If saving doesn’t start, long-press the image (phone) or right-click it (computer) and choose Save.</p>
+      <pre id="shareText"></pre>
+    </div>
+  </div>
+</div>
+
 <!-- ============ RESULTS ============ -->
 <div id="resultsView" hidden>
   <div class="res-bar">
     <div class="wrap">
       <div class="file"><b id="fileName"></b><span id="fileMeta"></span></div>
       <div class="res-actions">
-        <button class="btn btn-ghost" id="homeBtn" type="button">Back</button>
-        <button class="btn btn-primary" id="againBtn" type="button">Upload another chat</button>
+        <button class="btn btn-ghost" id="homeBtn" type="button" aria-label="Back to start"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span class="hide-sm">Back</span></button>
+        <button class="btn btn-ghost" id="againBtn" type="button">Upload another</button>
+        <button class="btn btn-primary" id="shareBar" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7M16 6l-4-4-4 4M12 2v13"/></svg>Share results</button>
       </div>
     </div>
   </div>
@@ -379,7 +458,7 @@ const WD = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 const WD_LONG = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 const DAY = 86400000;
 
-let rawText = null, sourceName = '', isSample = true, current = null;
+let rawText = null, sourceName = '', isSample = true, current = null, period = 'all';
 
 /* ---------------- parsing ---------------- */
 const RE_IOS = /^\[(\d{1,4})[\/.\-](\d{1,2})[\/.\-](\d{1,4}),?\s+(\d{1,2})[:.](\d{2})(?:[:.](\d{2}))?\s*([AaPp]\.?\s?[Mm]\.?)?\]\s?(.*)$/;
@@ -479,13 +558,13 @@ const dayKey = t => t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'
 const keyToUTC = k => { const [y,m,d] = k.split('-').map(Number); return Date.UTC(y,m-1,d); };
 const wdIdx = t => (t.getDay()+6)%7;
 
-function analyze(msgs, gapH){
+function analyze(msgs, gapH, slotOf){
   const gap = gapH*3600000;
   const people = new Map();
   const P = who => { if (!people.has(who)) people.set(who, {who, n:0, words:0, media:0, photos:0, videos:0, voice:0, stickers:0, emojis:0, emojiMap:new Map(), wordMap:new Map(), deleted:0, edited:0, links:0, night:0, morning:0, romance:0, laughs:0, sorry:0, questions:0, starts:0, replies:[], doubles:0, longestRun:0, textMsgs:0, hours:new Array(24).fill(0)}); return people.get(who); };
   const days = new Map();
   const heat = Array.from({length:7}, () => new Array(24).fill(0));
-  let prev = null, runWho = null, runLen = 0, longestSilence = {ms:0};
+  let prev = null, runWho = null, runLen = 0, longestSilence = {ms:0}, conv = null, longestConv = null;
   const dm = new Map(); // daily per person
   for (const m of msgs){
     const p = P(m.who); p.n++;
@@ -519,10 +598,13 @@ function analyze(msgs, gapH){
       const noLinks = s.replace(LINK_RE,' ').toLowerCase();
       for (const w of (noLinks.match(/[\p{L}']+/gu) || [])){ const x = w.replace(/^'+|'+$/g,''); if (x.length < 3 || STOP.has(x)) continue; p.wordMap.set(x, (p.wordMap.get(x)||0)+1); }
     }
+    if (dt >= gap) conv = {start:m.t, end:m.t, n:0, who:m.who};
+    conv.n++; conv.end = m.t;
+    if (!longestConv || conv.n > longestConv.n) longestConv = conv;
     prev = m;
   }
   const list = [...people.values()].sort((a,b) => b.n - a.n);
-  list.forEach((p,i) => { p.slot = i < 8 ? i+1 : 0; p.medReply = median(p.replies); });
+  list.forEach((p,i) => { p.slot = slotOf ? (slotOf.get(p.who) || 0) : (i < 8 ? i+1 : 0); p.medReply = median(p.replies); });
   // day stats
   const keys = [...days.keys()].sort();
   let busiest = null; for (const k of keys){ const d = days.get(k); if (!busiest || d.total > busiest.total) busiest = {key:k, ...d}; }
@@ -535,7 +617,7 @@ function analyze(msgs, gapH){
   const busiestHour = hourTotals.indexOf(Math.max(...hourTotals));
   const allEmoji = new Map(), allWords = new Map();
   for (const p of list){ for (const [e,c] of p.emojiMap) allEmoji.set(e,(allEmoji.get(e)||0)+c); for (const [w,c] of p.wordMap) allWords.set(w,(allWords.get(w)||0)+c); }
-  return {msgs, people:list, days, keys, busiest, streak:best, spanDays, longestSilence, heat, wdTotals, busiestWd, hourTotals, busiestHour, allEmoji, allWords, gapH, total:msgs.length, first:msgs[0]?.t, last:msgs[msgs.length-1]?.t};
+  return {msgs, people:list, days, keys, busiest, streak:best, spanDays, longestSilence, heat, wdTotals, busiestWd, hourTotals, busiestHour, allEmoji, allWords, gapH, firstMsg:msgs[0], longestConv, total:msgs.length, first:msgs[0]?.t, last:msgs[msgs.length-1]?.t};
 }
 
 /* ---------------- formatting helpers ---------------- */
@@ -562,7 +644,18 @@ function render(){
   R.style.display='flex'; R.style.flexDirection='column'; R.style.gap='44px';
   const A = current, ppl = A.people;
   const activeDays = A.keys.length;
+  const awardsHtml = awards(A);
   R.innerHTML = `
+  <div class="headline">
+    <div class="head-row">
+      <div class="periods" role="group" aria-label="Time period">${(A.years.length ? ['all', ...A.years] : []).map(y => `<button type="button" data-period="${y}" aria-pressed="${String(y) === String(A.period)}">${y === 'all' ? 'All time' : y}</button>`).join('')}</div>
+    </div>
+    <h1>${headlineHtml(A)}</h1>
+    <p class="lead">${leadHtml(A)}</p>
+  </div>
+
+  ${storyHtml(A)}
+
   <div class="summary">
     <div><span class="eyebrow">Messages</span><span class="big">${fmt(A.total)}</span><span class="sub">${ppl.length} ${ppl.length===1?'person':'people'}</span></div>
     <div><span class="eyebrow">Days talked</span><span class="big">${fmt(activeDays)}</span><span class="sub">of ${fmt(A.spanDays)} since ${fmtDate(A.first)}</span></div>
@@ -574,7 +667,7 @@ function render(){
 
   <section>
     <div class="sec-head"><h2>Superlatives</h2><p>Rates are per message sent, so the quieter person can still win. People with fewer than 20 messages are skipped for rate-based titles.</p></div>
-    <div class="awards">${awards(A)}</div>
+    <div class="awards">${awardsHtml}</div>
   </section>
 
   <section>
@@ -632,7 +725,142 @@ function render(){
     </ul></div>
   </details>`;
   drawAll();
+  R.querySelectorAll('.periods button').forEach(b => b.addEventListener('click', () => { period = b.dataset.period; run(true); }));
 }
+
+const periodLabel = A => A.period === 'all' ? 'All time' : String(A.period);
+function aw(A, title){ return (A.awardList || []).find(a => a.title === title); }
+function headlineHtml(A){
+  const ppl = A.people, inP = A.period === 'all' ? '' : ` in ${A.period}`;
+  const who = ppl.length === 1 ? esc(ppl[0].who) : ppl.length === 2 ? `${esc(ppl[0].who)} and ${esc(ppl[1].who)}` : `${ppl.length} people`;
+  return `${who} sent <em>${fmt(A.total)} messages</em>${inP}.`;
+}
+function leadHtml(A){
+  const ppl = A.people; if (ppl.length < 2) return `Across ${fmt(A.keys.length)} days of talking.`;
+  const most = aw(A,'Most messages'), st = aw(A,'Conversation starter'), fast = aw(A,'Fastest replier');
+  const facts = [];
+  if (most?.winner) facts.push([most.winner.who, `sends ${fmt1(most.winner.n/A.total*100)}% of them`]);
+  if (st?.winner) facts.push([st.winner.who, `starts ${ppl.length === 2 ? 'more' : 'the most'} conversations`]);
+  if (fast?.winner) facts.push([fast.winner.who, `replies ${ppl.length === 2 ? 'faster' : 'fastest'}`]);
+  if (!facts.length) return `Across ${fmt(A.keys.length)} days of talking.`;
+  const groups = []; for (const [w,t] of facts){ const g = groups.find(x => x.w === w); if (g) g.t.push(t); else groups.push({w, t:[t]}); }
+  const join = a => a.length > 1 ? a.slice(0,-1).join(', ') + ' and ' + a[a.length-1] : a[0];
+  const strs = groups.map(g => `<b>${esc(g.w)}</b> ${join(g.t)}`);
+  return (strs.length === 1 ? strs[0] : strs.length === 2 ? strs[0] + ', while ' + strs[1] : strs.slice(0,-1).join(', ') + ' and ' + strs[strs.length-1]) + '.';
+}
+function describeMsg(m){
+  if (m.media) return m.mediaType === 'media' ? 'sent a photo or video' : m.mediaType === 'image' ? 'sent a photo' : 'sent a ' + m.mediaType;
+  if (m.deleted) return 'a message that was later deleted';
+  return null;
+}
+function storyHtml(A){
+  const m = A.firstMsg, c = A.longestConv; if (!m) return '';
+  const p = A.people.find(x => x.who === m.who);
+  const desc = describeMsg(m);
+  const txt = desc ? `<span style="color:var(--ink-2);font-weight:500">${esc(m.who)} ${esc(desc)}</span>` : `“${esc(m.text.length > 160 ? m.text.slice(0,157) + '…' : m.text)}”`;
+  const ago = Math.max(0, Math.floor((Date.now() - m.ts) / DAY));
+  const hh = t => hourLabel(t.getHours()).replace(/(am|pm)/, ':' + String(t.getMinutes()).padStart(2,'0') + '$1');
+  const cp = c ? A.people.find(x => x.who === c.who) : null;
+  return `<div class="story">
+    <div class="storycard"><span class="eyebrow">${A.period === 'all' ? 'Where it all began' : 'First message of ' + A.period}</span>
+      <blockquote>${txt}</blockquote>
+      <div class="meta">${dot(p)}${esc(m.who)} · ${fmtDate(m.t)}, ${hh(m.t)}${A.period === 'all' ? ` · ${fmt(ago)} days ago` : ''}</div></div>
+    ${c ? `<div class="storycard"><span class="eyebrow">Longest conversation</span>
+      <div class="big">${fmt(c.n)} messages</div>
+      <div class="meta">${fmtDate(c.start)} · ${hh(c.start)} to ${hh(c.end)}${dayKey(c.end) !== dayKey(c.start) ? ' next day' : ''}, lasted ${fmtDur(c.end - c.start)}</div>
+      <div class="meta">${dot(cp)}Started by ${esc(c.who)}</div></div>` : ''}
+  </div>`;
+}
+
+/* ---------------- share ---------------- */
+function shareUrl(){ return /^https?:$/.test(location.protocol) && !/claude\.ai|claudeusercontent|localhost/.test(location.host) ? location.origin + location.pathname.replace(/index\.html$/,'') : ''; }
+function shareRows(A){
+  const rows = [];
+  const add = (title, fn) => { const a = aw(A, title); if (a && a.winner) rows.push({title, who: a.winner.who, slot: a.winner.slot, stat: fn(a.winner)}); };
+  add('Most messages', p => `${fmt1(p.n/A.total*100)}% of all messages`);
+  add('Conversation starter', p => `${fmt(p.starts)} conversations started`);
+  add('Fastest replier', p => `replies in ${fmtDur(p.medReply)}`);
+  add('Night owl', p => `${fmt1(p.night/p.n*100)}% sent after midnight`);
+  add('Most romantic', p => `${fmt1(p.romance/p.n*100)} love signals / 100 msgs`);
+  rows.push({title:'Busiest day', who: fmtKey(A.busiest.key), slot:-1, stat: `${fmt(A.busiest.total)} messages`});
+  return rows;
+}
+function shareText(A){
+  const ppl = A.people;
+  const who = ppl.length === 2 ? `${ppl[0].who} & ${ppl[1].who}` : `${ppl.length} people`;
+  const icon = {'Most messages':'🏆','Conversation starter':'💬','Fastest replier':'⚡','Night owl':'🌙','Most romantic':'❤️','Busiest day':'📅'};
+  const lines = [`🧾 Chat Receipts: ${who} (${periodLabel(A)})`, `${fmt(A.total)} messages · ${fmt(A.keys.length)} days talked`, ''];
+  for (const r of shareRows(A)) lines.push(`${icon[r.title] || '•'} ${r.title}: *${r.who}*, ${r.stat}`);
+  const u = shareUrl(); if (u) lines.push('', `Get yours: ${u}`);
+  return lines.join('\n');
+}
+async function drawShareCard(A){
+  const W = 1080, H = 1350, c = document.createElement('canvas'); c.width = W; c.height = H;
+  const x = c.getContext('2d');
+  try { await Promise.all([document.fonts.load('800 80px Geist'), document.fonts.load('600 40px Geist'), document.fonts.load('500 24px "Geist Mono"')]); } catch(e){}
+  const cs = getComputedStyle(document.documentElement), v = n => cs.getPropertyValue(n).trim();
+  const F = (w, sz, mono) => `${w} ${sz}px ${mono ? '"Geist Mono", ui-monospace, monospace' : 'Geist, system-ui, -apple-system, "Segoe UI", sans-serif'}`;
+  const fit = (t, max) => { if (x.measureText(t).width <= max) return t; while (t.length > 1 && x.measureText(t + '…').width > max) t = t.slice(0,-1); return t + '…'; };
+  const rr = (X,Y,w,h,r) => { x.beginPath(); x.moveTo(X+r,Y); x.arcTo(X+w,Y,X+w,Y+h,r); x.arcTo(X+w,Y+h,X,Y+h,r); x.arcTo(X,Y+h,X,Y,r); x.arcTo(X,Y,X+w,Y,r); x.closePath(); };
+  // background
+  x.fillStyle = '#00a6fb'; x.fillRect(0,0,W,H);
+  const g = x.createRadialGradient(W*0.9, 80, 10, W*0.9, 80, 700); g.addColorStop(0,'rgba(255,255,255,.35)'); g.addColorStop(1,'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0,0,W,H);
+  const ink = '#00192b';
+  x.fillStyle = ink; x.textBaseline = 'alphabetic';
+  x.font = F(500, 26, true); x.fillText('CHAT RECEIPTS', 72, 104);
+  x.textAlign = 'right'; x.fillText(periodLabel(A).toUpperCase(), W-72, 104); x.textAlign = 'left';
+  const ppl = A.people;
+  const title = ppl.length === 2 ? `${ppl[0].who} & ${ppl[1].who}` : ppl.length === 1 ? ppl[0].who : `${ppl.length} people`;
+  let size = 84; x.font = F(800, size); while (x.measureText(title).width > W-144 && size > 48){ size -= 4; x.font = F(800, size); }
+  x.fillText(fit(title, W-144), 72, 210);
+  x.font = F(500, 36); x.globalAlpha = .8; x.fillText(`${fmt(A.total)} messages · ${fmt(A.keys.length)} days talked`, 72, 270); x.globalAlpha = 1;
+  // card
+  const rows = shareRows(A), rh = Math.min(150, 860 / rows.length), cy = 330, ch = 40 + rows.length * rh; x.fillStyle = '#ffffff'; x.shadowColor = 'rgba(0,25,43,.25)'; x.shadowBlur = 40; x.shadowOffsetY = 16; rr(56, cy, W-112, ch, 36); x.fill(); x.shadowColor = 'transparent';
+  rows.forEach((r, i) => {
+    const y = cy + 20 + i*rh;
+    if (i) { x.fillStyle = '#e2e9f0'; x.fillRect(100, y, W-200, 2); }
+    x.fillStyle = '#0072b0'; x.font = F(500, 22, true); x.fillText(r.title.toUpperCase(), 100, y + 50);
+    x.fillStyle = '#475869'; x.font = F(400, 28); x.textAlign = 'right';
+    const stat = fit(r.stat, 440), sw = x.measureText(stat).width; x.fillText(stat, W-100, y + 108); x.textAlign = 'left';
+    let nx = 100;
+    if (r.slot > 0){ x.fillStyle = v('--s' + r.slot) || '#2a78d6'; x.beginPath(); x.arc(112, y + 94, 12, 0, Math.PI*2); x.fill(); nx = 138; }
+    x.fillStyle = ink; x.font = F(700, 44); x.fillText(fit(r.who, (W-100 - sw - 32) - nx), nx, y + 110);
+  });
+  x.fillStyle = ink; x.font = F(500, 26); x.globalAlpha = .85;
+  const u = shareUrl(); x.fillText(u ? 'Get yours at ' + u.replace(/^https?:\/\//,'').replace(/\/$/,'') : 'Made with Chat Receipts', 72, H-58); x.globalAlpha = 1;
+  return c;
+}
+let shareBlob = null, shareObjUrl = null;
+async function openShare(){
+  if (!current) return;
+  const A = current;
+  $('#shareModal').hidden = false; $('#shareToast').textContent = '';
+  $('#shareText').textContent = shareText(A);
+  const c = await drawShareCard(A);
+  shareBlob = await new Promise(r => c.toBlob(r, 'image/png'));
+  if (shareObjUrl) URL.revokeObjectURL(shareObjUrl);
+  shareObjUrl = URL.createObjectURL(shareBlob);
+  $('#shareImg').src = shareObjUrl;
+  const dl = $('#shareDownload'); dl.href = shareObjUrl; dl.download = `chat-receipts-${String(A.period).toLowerCase().replace(/\s+/g,'-')}.png`;
+  let can = false;
+  try { can = !!(navigator.canShare && navigator.canShare({files:[new File([shareBlob], 'chat-receipts.png', {type:'image/png'})]})); } catch(e){}
+  $('#shareNative').hidden = !can;
+  $('#shareClose').focus();
+}
+function closeShare(){ $('#shareModal').hidden = true; }
+$('#shareClose').addEventListener('click', closeShare);
+$('#shareModal').addEventListener('click', e => { if (e.target.id === 'shareModal') closeShare(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#shareModal').hidden) closeShare(); });
+$('#shareBar').addEventListener('click', openShare);
+$('#shareNative').addEventListener('click', async () => {
+  try { await navigator.share({files:[new File([shareBlob], 'chat-receipts.png', {type:'image/png'})], text: shareText(current)}); }
+  catch(e){ if (e && e.name !== 'AbortError') $('#shareToast').textContent = 'Sharing isn’t available here. Save the image instead.'; }
+});
+$('#shareCopy').addEventListener('click', async () => {
+  const t = shareText(current);
+  try { await navigator.clipboard.writeText(t); $('#shareToast').textContent = 'Copied. Paste it into any WhatsApp chat.'; }
+  catch(e){ const r = document.createRange(); r.selectNodeContents($('#shareText')); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); $('#shareToast').textContent = 'Text selected below. Copy it with Ctrl+C or long-press.'; }
+});
 
 function legend(ppl){
   const shown = ppl.slice(0,8).map(p => `<span>${dot(p)}${esc(p.who)}</span>`);
@@ -644,13 +872,15 @@ function awards(A){
   const ppl = A.people;
   const elig = ppl.filter(p => p.n >= 20);
   const pool = elig.length ? elig : ppl;
-  const cards = [];
+  const cards = []; A.awardList = [];
+  const strip = h => h.replace(/<[^>]+>/g,'').replace(/&amp;/g,'&');
   const winner = (arr, fn, lowWins) => { const s = arr.filter(p => fn(p) != null && !isNaN(fn(p))).sort((a,b) => lowWins ? fn(a)-fn(b) : fn(b)-fn(a)); return s; };
   function card(title, arr, fn, show, opts={}){
     const s = winner(arr, fn, opts.low);
-    if (!s.length || (!opts.low && !(fn(s[0]) > 0))){ cards.push(`<div class="award${opts.h?' heuristic':''}"><div class="title">${title}</div><div class="who">Nobody</div><div class="stat">${opts.none||'Not enough data'}</div></div>`); return; }
+    if (!s.length || (!opts.low && !(fn(s[0]) > 0))){ A.awardList.push({title, winner:null}); cards.push(`<div class="award${opts.h?' heuristic':''}"><div class="title">${title}</div><div class="who">Nobody</div><div class="stat">${opts.none||'Not enough data'}</div></div>`); return; }
     const w = s[0], r = s[1];
     const tie = r && fn(r) === fn(w);
+    A.awardList.push({title, winner: tie ? null : w, tie, stat: strip(show(w)), runner: r ? {who:r.who, stat:strip(show(r))} : null});
     cards.push(`<div class="award${opts.h?' heuristic':''}"><div class="title">${title}</div>
       <div class="who">${tie ? 'Tie' : dot(w)+esc(w.who)}</div>
       <div class="stat">${show(w)}${r ? `<br><span>${esc(r.who)}: ${show(r)}</span>` : ''}</div></div>`);
@@ -749,10 +979,10 @@ function drawTimeline(){
   list.forEach((b,i) => {
     const x = m.l + i*bw + gapPx/2; let y0 = m.t + ih;
     const stack = [];
-    for (let j=0;j<nppl;j++){ const v = b.per[j]; if (!v) continue; const slot = j < 8 ? j : 8; if (slot === 8 && stack.length && stack[stack.length-1].slot === 8) stack[stack.length-1].v += v; else stack.push({slot, v}); }
+    for (let j=0;j<nppl;j++){ const v = b.per[j]; if (!v) continue; const slot = A.people[j].slot || 0; if (slot === 0 && stack.length && stack[stack.length-1].slot === 0) stack[stack.length-1].v += v; else stack.push({slot, v}); }
     stack.forEach((s,si) => {
       const hgt = s.v/ymax*ih; const last = si === stack.length-1;
-      const fill = s.slot === 8 ? 'var(--sother)' : `var(--s${s.slot+1})`;
+      const fill = s.slot === 0 ? 'var(--sother)' : `var(--s${s.slot})`;
       const sep = stack.length > 1 && !last && hgt > 3 ? 1 : 0;
       if (last && barW >= 4 && hgt >= 4){
         const r = Math.min(3, barW/2);
@@ -864,18 +1094,30 @@ function run(keepScroll){
     return;
   }
   $('#uploadError').innerHTML = '';
-  current = analyze(parsed.msgs, +$('#gap').value);
+  const counts = new Map(); for (const m of parsed.msgs) counts.set(m.who, (counts.get(m.who)||0)+1);
+  const slotOf = new Map([...counts.entries()].sort((a,b) => b[1]-a[1]).map(([w],i) => [w, i < 8 ? i+1 : 0]));
+  const years = [...new Set(parsed.msgs.map(m => m.t.getFullYear()))].sort((a,b) => a-b);
+  if (period !== 'all' && !years.includes(+period)) period = 'all';
+  const msgs = period === 'all' ? parsed.msgs : parsed.msgs.filter(m => m.t.getFullYear() === +period);
+  current = analyze(msgs, +$('#gap').value, slotOf);
+  current.years = years.length > 1 ? years : []; current.period = period === 'all' ? 'all' : +period;
   current.platform = parsed.platform; current.order = parsed.order;
   $('#fileName').textContent = isSample ? 'Example chat: Tom & Jerry' : sourceName;
-  $('#fileMeta').textContent = `${fmt(parsed.msgs.length)} messages · ${fmtDate(current.first)} to ${fmtDate(current.last)}`;
+  $('#fileMeta').textContent = `${fmt(parsed.msgs.length)} messages · ${fmtDate(parsed.msgs[0].t)} to ${fmtDate(parsed.msgs[parsed.msgs.length-1].t)}`;
   $('#exampleBanner').hidden = !isSample;
   $('#detected').textContent = ($('#dateorder').value === 'auto' ? 'Detected: ' : 'Using: ') + orderName(parsed.order) + ` · ${parsed.platform} export`;
   if (!keepScroll) showView('results');
   render();
 }
 
+function showLoading(on, text){ $('#loading').hidden = !on; if (text) $('#loadingText').textContent = text; }
+const tick = () => new Promise(r => setTimeout(r, 30));
 async function loadFile(file){
   const okExt = /\.(zip|txt)$/i.test(file.name);
+  const mb = file.size / 1048576;
+  if (mb > 400){ showError(`<b>This file is ${Math.round(mb)} MB, which is too large to open in a browser.</b> It probably includes photos and videos. Export the chat again and choose “Without media”; the file will be a few MB at most.`); return; }
+  showLoading(true, mb > 30 ? `Reading your chat (${Math.round(mb)} MB, this can take a moment)…` : 'Reading your chat…');
+  await tick();
   try {
     const head = new Uint8Array(await file.slice(0,4).arrayBuffer());
     const isZip = head[0] === 0x50 && head[1] === 0x4b;
@@ -892,11 +1134,12 @@ async function loadFile(file){
       text = await file.text();
     }
     rawText = text; sourceName = file.name.replace(/\.(zip|txt)$/i,''); isSample = false;
-    $('#dateorder').value = 'auto';
+    $('#dateorder').value = 'auto'; period = 'all';
+    showLoading(true, 'Counting messages…'); await tick();
     run();
   } catch (e){
     showError(`<b>Couldn’t read that file.</b> ${esc(e.message || e)}`);
-  }
+  } finally { showLoading(false); }
 }
 
 const pickFile = () => $('#file').click();
@@ -904,7 +1147,7 @@ const pickFile = () => $('#file').click();
 $('#dropzone').addEventListener('click', pickFile);
 $('#dropzone').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pickFile(); } });
 $('#homeBtn').addEventListener('click', () => showView('landing'));
-$('#exampleBtn').addEventListener('click', () => { rawText = makeSample(); sourceName = 'Example chat'; isSample = true; $('#dateorder').value = 'auto'; run(); });
+$('#exampleBtn').addEventListener('click', () => { rawText = makeSample(); sourceName = 'Example chat'; isSample = true; period = 'all'; $('#dateorder').value = 'auto'; run(); });
 $('#file').addEventListener('change', e => { const f = e.target.files[0]; if (f) loadFile(f); e.target.value = ''; });
 $('#gap').addEventListener('change', () => run(true));
 $('#dateorder').addEventListener('change', () => run(true));
@@ -922,8 +1165,8 @@ function makeSample(){
   const lines = { [A]: ['hey','you up?','haha that’s so true','lol','kal ka plan kya hai','omw','sorry late ho gaya 😅','did you eat?','send the notes pls','that professor is something else','can’t believe the quiz tomorrow','ok done','hmm','bro the mess food today 😭','good morning ☀️','miss you','ok let me check','running to class','what time?','haha 😂','sounds good','this song >>> https://open.spotify.com/track/x','<Media omitted>','<Media omitted>','sure','love you','are you free after 6?','I’ll call you in 10','🤣🤣','wait what','nice nice'],
                  [M]: ['heyyy','finally!! 😍','hahaha stop','I was literally about to text you','did you finish the case?','no way 😂😂','good night, sweet dreams ❤️','omg yes','I’m so sleepy','ok but hear me out','miss youuu 🥺','love you too ❤️','<Media omitted>','<Media omitted>','<Media omitted>','lmao','what are we eating','call me when free','ugh deadlines','cutie 😘','hehe','see this https://instagram.com/p/x','yesss','nooo','I’ll be there by 8','This message was deleted','ok fine 🙄','🥰','why are you like this 😂','haan wait','sorry sorry 🙈'] };
   const pad = n => String(n).padStart(2,'0');
-  const out = ['01/03/26, 9:02 am - Messages and calls are end-to-end encrypted. Only people in this chat can read, listen to, or share them. Learn more.'];
-  const start = new Date(2026,2,1);
+  const out = ['03/11/25, 9:02 am - Messages and calls are end-to-end encrypted. Only people in this chat can read, listen to, or share them. Learn more.'];
+  const start = new Date(2025,10,3);
   for (let d = 0; d < 170; d++){
     const day = new Date(start.getTime() + d*DAY);
     if (rnd() < 0.09) continue;
