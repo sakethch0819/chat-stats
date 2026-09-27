@@ -269,6 +269,79 @@ footer.foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;co
 .storycard .big{font-size:1.9rem;font-weight:700;letter-spacing:-.03em;line-height:1}
 .storycard .meta{font-size:.86rem;color:var(--ink-2);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 
+/* filters + nav */
+.filters{display:flex;flex-direction:column;gap:10px;background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.frow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.flabel{font:500 .7rem/1 var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);min-width:92px}
+.periods.people{max-height:160px;overflow:auto}
+.periods button .dot{margin-right:6px;vertical-align:1px}
+.fnote{font-size:.8rem;color:var(--warn);min-height:1em}
+.secnav{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.secnav button{flex:none;border:0;background:none;color:var(--ink-2);font-weight:500;font-size:.9rem;padding:6px 10px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.secnav button:hover{background:var(--bg-2);color:var(--ink)}
+section,.summary,.headline{scroll-margin-top:84px}
+@media (max-width:640px){section,.summary,.headline{scroll-margin-top:130px}}
+[data-day]{cursor:pointer}
+.jump{color:var(--brand-deep);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.summary .clickable:hover{background:var(--brand-tint)}
+
+/* dry test */
+.dry-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.drycard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.drytop{display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
+.dryscore{font-size:3rem;font-weight:800;letter-spacing:-.05em;line-height:.9;font-variant-numeric:tabular-nums}
+.dryscore small{font-size:1rem;font-weight:500;color:var(--ink-3);letter-spacing:0}
+.verdict{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:.8rem;font-weight:600;background:var(--brand-tint);color:var(--brand-deep)}
+.verdict.v3{background:#fff1e6;color:#9a4a00}.verdict.v4{background:#fde7e7;color:#a12626}
+.meter{height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.meter i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--brand),#f59e0b 70%,#e34948)}
+.parts{display:flex;flex-direction:column;gap:7px;margin:0;padding:0;list-style:none}
+.parts li{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;font-size:.84rem;color:var(--ink-2)}
+.parts li .pb{grid-column:1 / -1;height:4px;border-radius:2px;background:var(--surface-2);overflow:hidden}
+.parts li .pb i{display:block;height:100%;background:var(--ink-3);border-radius:2px}
+.parts li .v{white-space:nowrap;text-align:right;font-family:var(--f-mono);font-size:.78rem;color:var(--ink)}
+
+/* changed */
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;background:var(--surface-2);border-radius:10px;padding:4px}
+.seg button{border:0;background:none;border-radius:7px;padding:6px 12px;font-size:.86rem;font-weight:500;color:var(--ink-2);cursor:pointer}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:var(--shadow-sm)}
+.range{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.85rem;color:var(--ink-2)}
+.range select{min-height:36px;padding:6px 10px}
+.callouts{display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--line);padding-top:12px}
+.callout{display:block;font-size:.92rem;color:var(--ink-2);line-height:1.6}
+.callout .dot{margin-right:6px}
+.callout b{color:var(--ink);font-weight:600}
+.callout .delta{font-family:var(--f-mono);font-size:.8rem;border-radius:6px;padding:2px 6px;background:var(--surface-2);color:var(--ink)}
+
+/* hanging + roles */
+.hang-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.hangcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.hangcard .row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;font-size:.88rem;color:var(--ink-2);border-top:1px solid var(--line);padding-top:8px}
+.hangcard .row b{font-family:var(--f-mono);color:var(--ink);font-weight:500;white-space:nowrap;text-align:right}
+.hangcard .row b small{display:block;color:var(--ink-3);font-size:.75rem;font-weight:400}
+.hangcard .wait{font-size:.86rem;color:var(--ink-2);background:var(--bg-2);border-radius:10px;padding:10px 12px}
+.hangcard .wait q{color:var(--ink);font-weight:600}
+.lead-line{font-size:1rem;color:var(--ink-2)}
+.lead-line b{color:var(--ink)}
+.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.role{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.role .rname{font-size:.72rem;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--brand-deep)}
+.role .who{font-size:1.25rem;font-weight:700;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;overflow-wrap:anywhere}
+.role p{font-size:.85rem;color:var(--ink-2)}
+
+/* day viewer */
+.day-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.day-controls input{font:inherit;border:1px solid var(--line-2);border-radius:10px;padding:8px 10px;min-height:40px;background:#fff;color:var(--ink)}
+.day-controls .btn{min-height:40px;padding:0 12px;font-size:.88rem}
+.day-count{font-size:.85rem;color:var(--ink-2)}
+.bubbles{display:flex;flex-direction:column;gap:3px;max-height:600px;overflow:auto;padding:12px;background:var(--bg-2);border-radius:12px;border:1px solid var(--line)}
+.who-line{display:flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;color:var(--ink-2);margin-top:10px}
+.who-line.r{justify-content:flex-end}
+.msg{max-width:min(80%,560px);background:#fff;border:1px solid var(--line);border-radius:4px 14px 14px 14px;padding:7px 10px 5px;font-size:.93rem;white-space:pre-wrap;overflow-wrap:anywhere;align-self:flex-start}
+.msg.r{align-self:flex-end;background:var(--brand-tint);border-color:var(--brand-tint-2);border-radius:14px 4px 14px 14px}
+.msg time{display:block;text-align:right;font:10.5px var(--f-mono);color:var(--ink-3);margin-top:2px}
+.msg i{color:var(--ink-3)}
+
 /* share modal */
 .modal{position:fixed;inset:0;z-index:60;background:rgba(0,25,43,.55);backdrop-filter:blur(4px);display:grid;place-items:center;padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
 .sheet{background:#fff;border-radius:20px;box-shadow:0 30px 80px -20px rgba(0,25,43,.5);width:min(920px,100%);max-height:100%;overflow:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;padding:22px}
@@ -323,7 +396,7 @@ footer.foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;co
           </div>
           <div class="upload-foot">
             <span class="lock"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Read in your browser. Nothing is uploaded to a server.</span>
-            <button class="linkbtn" id="exampleBtn" type="button">Try with an example chat</button>
+            <span>Try an example: <button class="linkbtn" id="exampleBtn" type="button">1-on-1 chat</button> · <button class="linkbtn" id="exampleGroupBtn" type="button">group chat</button></span>
           </div>
           <div id="uploadError"></div>
         </div>
@@ -331,13 +404,13 @@ footer.foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;co
 
       <div class="preview" aria-label="Example of the results">
         <span class="tag">Example</span>
-        <div class="ph"><span class="av">T</span><div><b>Tom &amp; Jerry</b><small>6,120 messages since 4 Nov</small></div></div>
-        <div class="bub"><span class="k">Most messages</span><b>Jerry</b> sent 58.9% of all messages</div>
+        <div class="ph"><span class="av">T</span><div><b>Tom &amp; Jerry</b><small>5,572 messages since 4 Nov</small></div></div>
+        <div class="bub"><span class="k">Most messages</span><b>Jerry</b> sent 58.1% of all messages</div>
         <div class="bub me"><span class="k">Fastest replier</span><b>Tom</b> usually replies within 2 min</div>
-        <div class="bub"><span class="k">Busiest day ever</span><b>104 messages</b> on Sun, 23 Nov
+        <div class="bub"><span class="k">Busiest day ever</span><b>97 messages</b> on Mon, 23 Mar
           <div class="minibars" aria-hidden="true"><i style="height:30%"></i><i style="height:45%"></i><i style="height:25%"></i><i style="height:55%"></i><i style="height:38%"></i><i class="hi" style="height:100%"></i><i style="height:42%"></i><i style="height:28%"></i><i style="height:50%"></i><i style="height:33%"></i></div>
         </div>
-        <div class="bub me"><span class="k">Night owl</span><b>Jerry</b> sends 24.2% of his texts after midnight</div>
+        <div class="bub me"><span class="k">Night owl</span><b>Jerry</b> sends 26% of his texts after midnight</div>
       </div>
     </div>
 
@@ -346,7 +419,7 @@ footer.foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;co
       <div class="features">
         <div class="feat"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3>Who talks more</h3><p>Messages, share of the chat, words, voice notes, links and deleted messages per person.</p></div>
         <div class="feat"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><h3>Every day, counted</h3><p>Messages on each day since the chat began, your busiest day ever, longest streak and longest silence.</p></div>
-        <div class="feat"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM17 6h3v2a3 3 0 0 1-3 3M7 6H4v2a3 3 0 0 0 3 3"/></svg></span><h3>12 titles to fight over</h3><ul><li>Conversation starter</li><li>Fastest replier</li><li>Night owl</li><li>Early bird</li><li>Most romantic</li><li>Emoji heavy</li><li>Double texter</li><li>Laughs most</li><li>Says sorry most</li></ul></div>
+        <div class="feat"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM17 6h3v2a3 3 0 0 1-3 3M7 6H4v2a3 3 0 0 0 3 3"/></svg></span><h3>Settle the arguments</h3><ul><li>Dry texter test</li><li>You’ve changed</li><li>Left hanging</li><li>Group chat roles</li><li>Conversation starter</li><li>Fastest replier</li><li>Night owl</li><li>Most romantic</li></ul></div>
         <div class="feat"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>When you’re most active</h3><p>Hour-by-hour patterns for each person and a weekday × hour map of the whole chat.</p></div>
         <div class="feat"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></span><h3>Favourite emojis and words</h3><p>Each person’s top emojis and most-used words, with filler words like “the” and “haan” left out.</p></div>
         <div class="feat"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span><h3>Reply speed</h3><p>Median reply time per person, who double texts, and the longest run of messages in a row.</p></div>
@@ -414,7 +487,7 @@ footer.foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;co
     </div>
   </div>
   <div class="wrap res-body">
-    <div id="exampleBanner" class="example-banner" hidden><span><b>This is a made-up example chat.</b> Upload your own export to see your numbers.</span><button class="btn btn-primary" id="bannerUpload" type="button" style="min-height:36px">Upload your chat</button></div>
+    <div id="exampleBanner" class="example-banner" hidden><span><b id="exampleWhat">This is a made-up example chat.</b> Upload your own export to see your numbers.</span><button class="btn btn-primary" id="bannerUpload" type="button" style="min-height:36px">Upload your chat</button></div>
     <div id="results"></div>
     <section>
       <div class="sec-head"><h2>Adjust the analysis</h2><p>The defaults work for most chats. Change these only if something looks off.</p></div>
@@ -458,11 +531,12 @@ const WD = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 const WD_LONG = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 const DAY = 86400000;
 
-let rawText = null, sourceName = '', isSample = true, current = null, period = 'all';
+let rawText = null, sourceName = '', isSample = true, sampleKind = 'duo', current = null, period = {y:'all', m:'all'}, selected = null, chMetric = 'first', chRange = null, allMsgs = [], dayIndex = new Map(), dayKeys = [], dayShown = null;
 
 /* ---------------- parsing ---------------- */
 const RE_IOS = /^\[(\d{1,4})[\/.\-](\d{1,2})[\/.\-](\d{1,4}),?\s+(\d{1,2})[:.](\d{2})(?:[:.](\d{2}))?\s*([AaPp]\.?\s?[Mm]\.?)?\]\s?(.*)$/;
 const RE_AND = /^(\d{1,4})[\/.\-](\d{1,2})[\/.\-](\d{1,4}),?\s+(\d{1,2})[:.](\d{2})(?:[:.](\d{2}))?\s*([AaPp]\.?\s?[Mm]\.?)?\s*[-–]\s(.*)$/;
+const SYS_WHO = /["“”]|\b(created group|created this group|changed the subject|changed the group|changed this group|pinned a message|joined using|changed their phone number|changed to \+|changed the settings)\b/i;
 const MARKS = /[‎‏‪-‮⁦-⁩﻿]/g;
 
 function parseChat(text, orderPref){
@@ -478,6 +552,7 @@ function parseChat(text, orderPref){
       const idx = rest.indexOf(': ');
       if (idx < 0){ cur = null; continue; }            // system line (no sender)
       let who = rest.slice(0, idx).replace(MARKS,'').replace(/^~\s*/,'').trim();
+      if (SYS_WHO.test(who)){ cur = null; continue; }   // group system line containing a colon
       let body = rest.slice(idx + 2);
       cur = {a:m[1], b:m[2], c:m[3], h:+m[4], mi:+m[5], s:+(m[6]||0), ap:m[7]||'', who, body, lrm:/^[‎]/.test(body)};
       recs.push(cur); platform = platform || p;
@@ -508,10 +583,10 @@ function parseChat(text, orderPref){
     if (isNaN(t)) continue;
     const cls = classify(r.body, r.lrm);
     if (cls.system) continue;
-    msgs.push({t, ts:t.getTime(), who:r.who, ...cls});
+    msgs.push({t, ts:t.getTime(), who:r.who, ...cls, wc: (!cls.media && !cls.deleted) ? (cls.text.match(/[\p{L}\p{N}']+/gu) || []).length : 0});
   }
   msgs.sort((a,b) => a.ts - b.ts);
-  return {msgs, order, platform: platform || 'unknown', lines: lines.length, firstLine: lines.find(x => x.trim()) || ''};
+  return {msgs, order, records: recs.length, platform: platform || 'unknown', lines: lines.length, firstLine: lines.find(x => x.trim()) || ''};
 }
 
 function classify(body0, lrm){
@@ -553,18 +628,58 @@ const SORRY_RE = /\b(sorry|sry|sowwy|soz|my bad|apologi[sz]e)\b/gi;
 const LINK_RE = /https?:\/\/\S+/gi;
 const STOP = new Set((`the a an and or but if so to of in on at for with from by is are was were be been am i you he she it we they me my your our their this that these those what which who whom how why when where there here not no yes ok okay okk ya yaa yeah yep haan han nahi nhi na hai hain ho hu hoon tha thi the kya kyu kyun ki ke ka ko se me mai main mein tu tum aap bhi toh to ye yeh wo woh vo abhi aur par pe hi just like get got have has had do does did dont don't im i'm its it's can will would should could all also then than too very really much more some any one about into out up down over only now oh u ur r n k hmm hmmm lol haha hahaha ha media omitted deleted message edited null www https http com`).split(/\s+/));
 
+const DRY_RE = /^(ok+|okay+|okie|okk+|k+|kk+|hm+|hmm+|ha+n|ha+|han+|ya+|yea+h?|yes|yep|no|nope|fine|cool|nice|lol|acha+|accha+|achha+|thik|theek|theek hai|thik hai|oh+|ohh+ ok|oh ok|sure|done|right|same|true|good|great|hmm ok|ok ok)$/;
+const CLOSER_RE = /^(good ?night|gn+|g8|gnight|night|nighty|sweet dreams|bye+|ok bye+|byee+|tata|ttyl|see (you|ya)|cya|talk (to you )?later|ttyl|sleeping|going to sleep|so ja|sojao|chal bye|okay bye|ok gn|gn ok)\b/;
+const CLOSER_EMOJI = /^[\s😴💤👋🌙✨🫡👍🙂]+$/u;
 function median(a){ if (!a.length) return null; const s = a.slice().sort((x,y)=>x-y); const k = s.length>>1; return s.length%2 ? s[k] : (s[k-1]+s[k])/2; }
 const dayKey = t => t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0');
 const keyToUTC = k => { const [y,m,d] = k.split('-').map(Number); return Date.UTC(y,m-1,d); };
 const wdIdx = t => (t.getDay()+6)%7;
 
+function dryness(p){
+  if (p.textMsgs < 10) return null;
+  const c = x => Math.max(0, Math.min(1, x));
+  const tm = p.textMsgs;
+  const short = p.short/tm, dryW = p.dryWords/tm, q = p.questions/tm, emo = p.emojis/tm, avgW = p.words/tm;
+  const longR = p.longReplies.length >= 3 ? p.longReplies.reduce((a,b) => a+b, 0)/p.longReplies.length : null;
+  const parts = [
+    {label:'One- or two-word messages', v:c(short/0.6), w:25, detail:fmt1(short*100)+'%'},
+    {label:'“ok”, “hmm”, “k” style replies', v:c(dryW/0.25), w:25, detail:fmt1(dryW*100)+'%'},
+    {label:'Rarely asks questions back', v:1-c(q/0.15), w:15, detail:fmt1(q*100)+'% ask'},
+    {label:'Few emojis', v:1-c(emo/0.3), w:10, detail:fmt1(emo*100)+'/100'},
+    {label:'Short replies to long messages', v: longR == null ? 0.5 : 1-c(longR/12), w:15, detail: longR == null ? 'n/a' : fmt1(longR)+' words'},
+    {label:'Short messages overall', v:1-c((avgW-1)/7), w:10, detail:fmt1(avgW)+' words'},
+  ];
+  const score = Math.round(parts.reduce((a,x) => a + x.v*x.w, 0));
+  const tier = score >= 66 ? 4 : score >= 46 ? 3 : score >= 26 ? 2 : 1;
+  const verdict = ['', 'Juicy texter', 'Normal texter', 'A bit dry', 'Certified dry'][tier];
+  return {score, tier, verdict, parts};
+}
+const monthKey = t => t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0');
+const fmtMonth = k => { const [y,m] = k.split('-').map(Number); return MONTHS[m-1]+' '+y; };
+const fmtMonthShort = k => { const [y,m] = k.split('-').map(Number); return MONTHS[m-1]+" '"+String(y).slice(2); };
+function monthly(msgs, gapH){
+  const gap = gapH*3600000, map = new Map(); let prev = null;
+  for (const m of msgs){
+    const k = monthKey(m.t); let M = map.get(k); if (!M){ M = {starts:0, per:new Map()}; map.set(k, M); }
+    let q = M.per.get(m.who); if (!q){ q = {n:0, words:0, textMsgs:0, starts:0, replies:[]}; M.per.set(m.who, q); }
+    q.n++; if (!m.media && !m.deleted){ q.textMsgs++; q.words += m.wc; }
+    const dt = prev ? m.ts - prev.ts : Infinity;
+    if (dt >= gap){ q.starts++; M.starts++; } else if (prev.who !== m.who) q.replies.push(dt);
+    prev = m;
+  }
+  const keys = [...map.keys()].sort(); const all = [];
+  if (keys.length){ let [y,mo] = keys[0].split('-').map(Number); const [ey,em] = keys[keys.length-1].split('-').map(Number);
+    while (y < ey || (y === ey && mo <= em)){ all.push(y+'-'+String(mo).padStart(2,'0')); mo++; if (mo > 12){ mo = 1; y++; } } }
+  return {map, keys: all};
+}
 function analyze(msgs, gapH, slotOf){
   const gap = gapH*3600000;
   const people = new Map();
-  const P = who => { if (!people.has(who)) people.set(who, {who, n:0, words:0, media:0, photos:0, videos:0, voice:0, stickers:0, emojis:0, emojiMap:new Map(), wordMap:new Map(), deleted:0, edited:0, links:0, night:0, morning:0, romance:0, laughs:0, sorry:0, questions:0, starts:0, replies:[], doubles:0, longestRun:0, textMsgs:0, hours:new Array(24).fill(0)}); return people.get(who); };
+  const P = who => { if (!people.has(who)) people.set(who, {who, n:0, words:0, media:0, photos:0, videos:0, voice:0, stickers:0, emojis:0, emojiMap:new Map(), wordMap:new Map(), deleted:0, edited:0, links:0, night:0, morning:0, romance:0, laughs:0, sorry:0, questions:0, starts:0, replies:[], doubles:0, longestRun:0, textMsgs:0, hours:new Array(24).fill(0), hanging:0, qHanging:0, revives:0, longReplies:[], short:0, dryWords:0, longestWait:null}); return people.get(who); };
   const days = new Map();
   const heat = Array.from({length:7}, () => new Array(24).fill(0));
-  let prev = null, runWho = null, runLen = 0, longestSilence = {ms:0}, conv = null, longestConv = null;
+  let prev = null, runWho = null, runLen = 0, longestSilence = {ms:0}, conv = null, longestConv = null, openQ = null;
   const dm = new Map(); // daily per person
   for (const m of msgs){
     const p = P(m.who); p.n++;
@@ -585,6 +700,8 @@ function analyze(msgs, gapH, slotOf){
     else if (m.deleted) p.deleted++;
     else {
       const s = m.text; p.textMsgs++;
+      if (m.wc <= 2) p.short++;
+      if (DRY_RE.test(s.toLowerCase().replace(/[^\p{L}\s]/gu,'').replace(/\s+/g,' ').trim())) p.dryWords++;
       const words = s.match(/[\p{L}\p{N}']+/gu) || [];
       p.words += words.length;
       if (s.includes('?')) p.questions++;
@@ -598,13 +715,21 @@ function analyze(msgs, gapH, slotOf){
       const noLinks = s.replace(LINK_RE,' ').toLowerCase();
       for (const w of (noLinks.match(/[\p{L}']+/gu) || [])){ const x = w.replace(/^'+|'+$/g,''); if (x.length < 3 || STOP.has(x)) continue; p.wordMap.set(x, (p.wordMap.get(x)||0)+1); }
     }
+    if (prev && dt >= gap && !prev.media){
+      const pt = (prev.text || '').toLowerCase().trim();
+      if (!CLOSER_RE.test(pt) && !CLOSER_EMOJI.test(pt)){ const pp = P(prev.who); pp.hanging++; if (pt.includes('?')) pp.qHanging++; }
+    }
+    if (prev && dt >= DAY) p.revives++;
+    if (prev && prev.who !== m.who && dt < gap && prev.wc >= 15 && !m.media && !m.deleted) p.longReplies.push(m.wc);
+    if (openQ && m.who !== openQ.who){ const w = m.ts - openQ.ts; if (w <= 7*DAY){ const qp = P(openQ.who); if (!qp.longestWait || w > qp.longestWait.ms) qp.longestWait = {ms:w, text:openQ.text, t:openQ.t, by:m.who}; } openQ = null; }
+    if (!openQ && !m.media && !m.deleted && m.text.includes('?')) openQ = {who:m.who, ts:m.ts, t:m.t, text:m.text};
     if (dt >= gap) conv = {start:m.t, end:m.t, n:0, who:m.who};
     conv.n++; conv.end = m.t;
     if (!longestConv || conv.n > longestConv.n) longestConv = conv;
     prev = m;
   }
   const list = [...people.values()].sort((a,b) => b.n - a.n);
-  list.forEach((p,i) => { p.slot = slotOf ? (slotOf.get(p.who) || 0) : (i < 8 ? i+1 : 0); p.medReply = median(p.replies); });
+  list.forEach((p,i) => { p.slot = slotOf ? (slotOf.get(p.who) || 0) : (i < 8 ? i+1 : 0); p.medReply = median(p.replies); p.dry = dryness(p); });
   // day stats
   const keys = [...days.keys()].sort();
   let busiest = null; for (const k of keys){ const d = days.get(k); if (!busiest || d.total > busiest.total) busiest = {key:k, ...d}; }
@@ -642,14 +767,13 @@ function render(){
   const R = $('#results');
   if (!current || !current.total){ R.innerHTML = ''; return; }
   R.style.display='flex'; R.style.flexDirection='column'; R.style.gap='44px';
-  const A = current, ppl = A.people;
+  const A = current, ppl = A.sel;
   const activeDays = A.keys.length;
   const awardsHtml = awards(A);
   R.innerHTML = `
-  <div class="headline">
-    <div class="head-row">
-      <div class="periods" role="group" aria-label="Time period">${(A.years.length ? ['all', ...A.years] : []).map(y => `<button type="button" data-period="${y}" aria-pressed="${String(y) === String(A.period)}">${y === 'all' ? 'All time' : y}</button>`).join('')}</div>
-    </div>
+  ${filtersHtml(A)}
+  <nav class="secnav" aria-label="Jump to section">${[['s-top','Overview'],['s-dry','Dry test'],['s-changed','You’ve changed'],['s-hanging','Left hanging'],...(A.people.length > 2 ? [['s-roles','Group roles']] : []),['s-awards','Titles'],['s-charts','Charts'],['s-day','Read any day']].map(([id,l]) => `<button type="button" data-go="${id}">${l}</button>`).join('')}</nav>
+  <div class="headline" id="s-top">
     <h1>${headlineHtml(A)}</h1>
     <p class="lead">${leadHtml(A)}</p>
   </div>
@@ -659,24 +783,29 @@ function render(){
   <div class="summary">
     <div><span class="eyebrow">Messages</span><span class="big">${fmt(A.total)}</span><span class="sub">${ppl.length} ${ppl.length===1?'person':'people'}</span></div>
     <div><span class="eyebrow">Days talked</span><span class="big">${fmt(activeDays)}</span><span class="sub">of ${fmt(A.spanDays)} since ${fmtDate(A.first)}</span></div>
-    <div><span class="eyebrow">Busiest day</span><span class="big">${fmt(A.busiest.total)}</span><span class="sub">${fmtKeyWd(A.busiest.key)}</span></div>
+    <div class="clickable" data-day="${A.busiest.key}" title="Read this day"><span class="eyebrow">Busiest day</span><span class="big">${fmt(A.busiest.total)}</span><span class="sub jump">${fmtKeyWd(A.busiest.key)}</span></div>
     <div><span class="eyebrow">Longest streak</span><span class="big">${fmt(A.streak.len)} days</span><span class="sub">${fmtKey(A.streak.start)} – ${fmtKey(A.streak.end)}</span></div>
     <div><span class="eyebrow">Longest silence</span><span class="big">${fmtDur(A.longestSilence.ms)}</span><span class="sub">${A.longestSilence.from ? 'ended '+fmtDate(A.longestSilence.to) : '—'}</span></div>
     <div><span class="eyebrow">Per active day</span><span class="big">${fmt1(A.total/activeDays)}</span><span class="sub">${WD_LONG[A.busiestWd]}s busiest, peak at ${hourLabel(A.busiestHour)}</span></div>
   </div>
 
-  <section>
+  ${dryHtml(A)}
+  ${changedHtml(A)}
+  ${hangingHtml(A)}
+  ${A.people.length > 2 ? rolesHtml(A) : ''}
+
+  <section id="s-awards">
     <div class="sec-head"><h2>Superlatives</h2><p>Rates are per message sent, so the quieter person can still win. People with fewer than 20 messages are skipped for rate-based titles.</p></div>
     <div class="awards">${awardsHtml}</div>
   </section>
 
   <section>
-    <div class="sec-head"><h2>Who sent what</h2><p>Media counts come from “omitted” placeholders. Android exports label every photo, video and sticker as &lt;Media omitted&gt;, so only iPhone exports split out photos.</p></div>
+    <div class="sec-head"><h2>Who sent what</h2><p>${A.people.length > A.sel.length ? `Showing the ${A.sel.length} people you’re comparing, out of ${A.people.length}. ` : ''}Media counts come from “omitted” placeholders. Android exports label every photo, video and sticker as &lt;Media omitted&gt;, so only iPhone exports split out photos.</p></div>
     <div class="tbl-wrap">${peopleTable(A)}</div>
   </section>
 
-  <section>
-    <div class="sec-head"><h2>When you talk</h2></div>
+  <section id="s-charts">
+    <div class="sec-head"><h2>When you talk</h2><p>Tap a bar to read that day’s messages.</p></div>
     <div class="panel">
       <div class="panel-head"><h3 id="tl-title">Messages over time</h3><div class="legend">${legend(ppl)}</div></div>
       <div class="chart" id="timeline"></div>
@@ -706,9 +835,22 @@ function render(){
     </div>
   </section>
 
+  <section id="s-day">
+    <div class="sec-head"><h2>Read any day</h2><p>Pick a date, or tap the busiest day, a bar or a row in the daily list to jump here. This stays on your screen and never goes into the share card.</p></div>
+    <div class="panel">
+      <div class="day-controls">
+        <button class="btn btn-ghost" id="dayPrev" type="button" aria-label="Previous day with messages">‹ Prev</button>
+        <input type="date" id="dayPick" aria-label="Choose a date" min="${dayKeys[0]}" max="${dayKeys[dayKeys.length-1]}">
+        <button class="btn btn-ghost" id="dayNext" type="button" aria-label="Next day with messages">Next ›</button>
+        <span class="day-count" id="dayCount"></span>
+      </div>
+      <div class="bubbles" id="dayMsgs"></div>
+    </div>
+  </section>
+
   <details id="dailyDetails">
     <summary>Messages on each day (${fmt(activeDays)} days)</summary>
-    <div class="inner"><div class="daily">${dailyTable(A)}</div><p>Only days with at least one message are listed. The busiest day is highlighted.</p></div>
+    <div class="inner"><div class="daily">${dailyTable(A)}</div><p>Only days with at least one message are listed. The busiest day is highlighted. Tap a date to read it.</p></div>
   </details>
 
   <details>
@@ -720,12 +862,24 @@ function render(){
       <li><b>Double texts</b>: sending again after 30+ minutes with no reply in between.</li>
       <li><b>Most romantic</b> is a keyword count, not a reading of tone: words like love you, miss you, jaan, baby, cutie, sweet dreams, plus heart and kiss emojis, per 100 messages. Sarcasm, inside jokes, other languages and “I love pizza” all fool it.</li>
       <li><b>Laughs most</b>: haha, hehe, lol, lmao and 😂 🤣 😆 😅, per 100 messages.</li>
+      <li><b>Dry texter score</b> (0–100, higher is drier): one- or two-word messages 25, “ok/hmm/k” style replies 25, rarely asking questions 15, short replies to messages of 15+ words 15, few emojis 10, short messages overall 10. Needs 10+ text messages. 0–25 juicy, 26–45 normal, 46–65 a bit dry, 66+ certified dry.</li>
+      <li><b>Left hanging</b>: a message followed by ${A.gapH}+ hours of silence. Goodnights, byes and 😴/👋 don’t count. <b>Longest wait</b>: time from a question to the next message by anyone else, up to 7 days.</li>
+      <li><b>You’ve changed</b>: “Texts first” is each person’s share of the conversations started that month. Early vs recent compares the first and last few months of the range you pick.</li>
+      <li><b>Group roles</b>: lurker = fewest messages; meme dumper = highest share of media; conversation killer = most messages followed by silence, per 100 sent; dead chat reviver = most messages after 24+ hours of silence; hype person = most laughs per 100 messages. Rate-based roles need 20+ messages.</li>
       <li>System lines (encryption notice, group changes, missed calls on iPhone) are ignored. Deleted messages count toward totals but not toward words or emojis.</li>
       <li>This export: ${esc(current.platform)} format, dates read as ${current.order === 'DMY' ? 'DD/MM' : current.order === 'MDY' ? 'MM/DD' : 'YYYY/MM/DD'}. If dates look wrong, change it under “Adjust the analysis”.</li>
     </ul></div>
   </details>`;
-  drawAll();
-  R.querySelectorAll('.periods button').forEach(b => b.addEventListener('click', () => { period = b.dataset.period; run(true); }));
+  drawAll(); drawChanged(); wireFilters();
+  showDay(dayShown && dayIndex.has(dayShown) && (A.period === 'all' || A.days.has(dayShown)) ? dayShown : A.busiest.key, false);
+  R.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => { const t = document.getElementById(b.dataset.go); if (t) t.scrollIntoView({behavior:'smooth', block:'start'}); }));
+  $('#dayPick').addEventListener('change', e => { if (e.target.value) showDay(e.target.value, false); });
+  $('#dayPrev').addEventListener('click', () => { const i = dayKeys.indexOf(dayShown); if (i > 0) showDay(dayKeys[i-1], false); });
+  $('#dayNext').addEventListener('click', () => { const i = dayKeys.indexOf(dayShown); if (i >= 0 && i < dayKeys.length-1) showDay(dayKeys[i+1], false); });
+  R.querySelectorAll('[data-metric]').forEach(b => b.addEventListener('click', () => { chMetric = b.dataset.metric; R.querySelectorAll('[data-metric]').forEach(x => x.setAttribute('aria-pressed', String(x === b))); drawChanged(); }));
+  const cf = $('#chFrom'), ct = $('#chTo');
+  if (cf) { cf.addEventListener('change', () => { chRange.from = cf.value; if (chRange.from > chRange.to) { chRange.to = chRange.from; ct.value = chRange.to; } drawChanged(); });
+            ct.addEventListener('change', () => { chRange.to = ct.value; if (chRange.to < chRange.from) { chRange.from = chRange.to; cf.value = chRange.from; } drawChanged(); }); }
 }
 
 const periodLabel = A => A.period === 'all' ? 'All time' : String(A.period);
@@ -762,9 +916,9 @@ function storyHtml(A){
   const hh = t => hourLabel(t.getHours()).replace(/(am|pm)/, ':' + String(t.getMinutes()).padStart(2,'0') + '$1');
   const cp = c ? A.people.find(x => x.who === c.who) : null;
   return `<div class="story">
-    <div class="storycard"><span class="eyebrow">${A.period === 'all' ? 'Where it all began' : 'First message of ' + A.period}</span>
+    <div class="storycard"><span class="eyebrow">${A.period !== 'all' ? 'First message of ' + A.period : A.truncated ? 'Earliest message in this export' : 'Where it all began'}</span>
       <blockquote>${txt}</blockquote>
-      <div class="meta">${dot(p)}${esc(m.who)} · ${fmtDate(m.t)}, ${hh(m.t)}${A.period === 'all' ? ` · ${fmt(ago)} days ago` : ''}</div></div>
+      <div class="meta">${dot(p)}${esc(m.who)} · ${fmtDate(m.t)}, ${hh(m.t)}${A.period === 'all' ? ` · ${fmt(ago)} days ago` : ''}</div>${A.truncated && A.period === 'all' ? `<div class="meta">WhatsApp exports only the latest 40,000 messages, so anything older isn’t in this file. All numbers cover ${fmtDate(A.first)} onward.</div>` : ''}</div>
     ${c ? `<div class="storycard"><span class="eyebrow">Longest conversation</span>
       <div class="big">${fmt(c.n)} messages</div>
       <div class="meta">${fmtDate(c.start)} · ${hh(c.start)} to ${hh(c.end)}${dayKey(c.end) !== dayKey(c.start) ? ' next day' : ''}, lasted ${fmtDur(c.end - c.start)}</div>
@@ -777,18 +931,24 @@ function shareUrl(){ return /^https?:$/.test(location.protocol) && !/claude\.ai|
 function shareRows(A){
   const rows = [];
   const add = (title, fn) => { const a = aw(A, title); if (a && a.winner) rows.push({title, who: a.winner.who, slot: a.winner.slot, stat: fn(a.winner)}); };
+  const driest = A.sel.filter(p => p.dry).sort((a,b) => b.dry.score - a.dry.score)[0];
   add('Most messages', p => `${fmt1(p.n/A.total*100)}% of all messages`);
-  add('Conversation starter', p => `${fmt(p.starts)} conversations started`);
-  add('Fastest replier', p => `replies in ${fmtDur(p.medReply)}`);
-  add('Night owl', p => `${fmt1(p.night/p.n*100)}% sent after midnight`);
-  add('Most romantic', p => `${fmt1(p.romance/p.n*100)} love signals / 100 msgs`);
+  if (A.people.length > 2){
+    const roles = A.roles || rolesOf(A);
+    for (const nm of ['Conversation killer','Meme dumper','Dead chat reviver']){ const r = roles.find(x => x.name === nm); if (r) rows.push({title: nm, who: r.w.who, slot: r.w.slot, stat: r.stat(r.w)}); }
+  } else {
+    add('Conversation starter', p => `${fmt(p.starts)} conversations started`);
+    add('Fastest replier', p => `replies in ${fmtDur(p.medReply)}`);
+  }
+  if (driest) rows.push({title:'Driest texter', who: driest.who, slot: driest.slot, stat: `${driest.dry.score}/100 dryness`});
+  if (A.people.length <= 2) add('Most romantic', p => `${fmt1(p.romance/p.n*100)} love signals / 100 msgs`);
   rows.push({title:'Busiest day', who: fmtKey(A.busiest.key), slot:-1, stat: `${fmt(A.busiest.total)} messages`});
-  return rows;
+  return rows.slice(0,6);
 }
 function shareText(A){
   const ppl = A.people;
   const who = ppl.length === 2 ? `${ppl[0].who} & ${ppl[1].who}` : `${ppl.length} people`;
-  const icon = {'Most messages':'🏆','Conversation starter':'💬','Fastest replier':'⚡','Night owl':'🌙','Most romantic':'❤️','Busiest day':'📅'};
+  const icon = {'Most messages':'🏆','Conversation starter':'💬','Fastest replier':'⚡','Night owl':'🌙','Most romantic':'❤️','Busiest day':'📅','Driest texter':'🌵','Conversation killer':'💀','Meme dumper':'🖼️','Dead chat reviver':'🔁'};
   const lines = [`🧾 Chat Receipts: ${who} (${periodLabel(A)})`, `${fmt(A.total)} messages · ${fmt(A.keys.length)} days talked`, ''];
   for (const r of shareRows(A)) lines.push(`${icon[r.title] || '•'} ${r.title}: *${r.who}*, ${r.stat}`);
   const u = shareUrl(); if (u) lines.push('', `Get yours: ${u}`);
@@ -862,14 +1022,195 @@ $('#shareCopy').addEventListener('click', async () => {
   catch(e){ const r = document.createRange(); r.selectNodeContents($('#shareText')); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); $('#shareToast').textContent = 'Text selected below. Copy it with Ctrl+C or long-press.'; }
 });
 
+function filtersHtml(A){
+  const yrs = A.years, showYears = yrs.length > 1;
+  const yForMonths = period.y !== 'all' ? +period.y : (yrs.length === 1 ? yrs[0] : null);
+  const months = yForMonths != null ? A.monthsOf(yForMonths) : [];
+  const pressedY = y => String(y) === String(period.y);
+  let h = '<div class="filters">';
+  if (showYears) h += `<div class="frow"><span class="flabel">Year</span><div class="periods" role="group" aria-label="Year">${['all', ...yrs].map(y => `<button type="button" data-y="${y}" aria-pressed="${pressedY(y)}">${y === 'all' ? 'All time' : y}</button>`).join('')}</div></div>`;
+  if (months.length > 1) h += `<div class="frow"><span class="flabel">Month${showYears ? '' : ' (' + yForMonths + ')'}</span><div class="periods" role="group" aria-label="Month">${showYears ? '' : `<button type="button" data-y="all" aria-pressed="${period.y === 'all'}">All</button>`}${showYears ? `<button type="button" data-m="all" aria-pressed="${period.m === 'all'}">Whole year</button>` : ''}${months.map(m => `<button type="button" data-m="${m}" data-yy="${yForMonths}" aria-pressed="${String(period.m) === String(m) && String(period.y) === String(yForMonths)}">${MONTHS[m]}</button>`).join('')}</div></div>`;
+  if (A.people.length > 2){
+    const selNames = A.sel.map(p => p.who);
+    h += `<div class="frow"><span class="flabel">Compare (max 5)</span><div class="periods people" role="group" aria-label="People to compare">${A.people.map(p => { const on = selNames.includes(p.who); return `<button type="button" data-person="${esc(p.who)}" aria-pressed="${on}">${on ? dot(p) : ''}${esc(p.who)} <span class="num" style="opacity:.6">${fmt(p.n)}</span></button>`; }).join('')}</div></div><div class="fnote" id="fnote"></div>`;
+  }
+  return h + '</div>';
+}
+function wireFilters(){
+  const R = $('#results');
+  R.querySelectorAll('[data-y]').forEach(b => b.addEventListener('click', () => { period = {y: b.dataset.y, m:'all'}; run(true); }));
+  R.querySelectorAll('[data-m]').forEach(b => b.addEventListener('click', () => { period = {y: b.dataset.yy || period.y, m: b.dataset.m}; run(true); }));
+  R.querySelectorAll('[data-person]').forEach(b => b.addEventListener('click', () => {
+    const name = b.dataset.person, cur = current.sel.map(p => p.who);
+    if (cur.includes(name)){ if (cur.length === 1) { $('#fnote').textContent = 'Keep at least one person selected.'; return; } selected = cur.filter(n => n !== name); }
+    else { if (cur.length >= 5) { $('#fnote').textContent = 'You can compare up to 5 people. Tap someone to remove them first.'; return; } selected = [...cur, name]; }
+    run(true);
+  }));
+}
+
+function dryHtml(A){
+  const list = A.sel.map(p => ({p, d:p.dry})).sort((a,b) => (b.d ? b.d.score : -1) - (a.d ? a.d.score : -1));
+  const scored = list.filter(x => x.d);
+  let lead = '';
+  if (scored.length >= 2){ const hi = scored[0], lo = scored[scored.length-1]; lead = hi.d.score === lo.d.score ? 'It’s a tie. Equally dry.' : `<b>${esc(hi.p.who)}</b> is the driest texter here at ${hi.d.score}/100. <b>${esc(lo.p.who)}</b> ${lo.d.score < 46 ? 'carries the conversation' : 'is the least dry'} at ${lo.d.score}/100.`; }
+  return `<section id="s-dry">
+    <div class="sec-head"><h2>Dry texter test</h2><p>Scored from how people reply, not what they say. Higher is drier.${A.period !== 'all' ? ' Period: ' + esc(A.period) + '.' : ''}</p></div>
+    ${lead ? `<p class="lead-line">${lead}</p>` : ''}
+    <div class="dry-grid">${list.map(({p,d}) => d ? `<div class="drycard">
+      <div class="drytop"><div><h3 style="display:flex;align-items:center;gap:8px">${dot(p)}${esc(p.who)}</h3><span class="verdict v${d.tier}" style="margin-top:8px">${d.verdict}</span></div><div class="dryscore">${d.score}<small>/100</small></div></div>
+      <div class="meter" role="img" aria-label="Dryness ${d.score} out of 100"><i style="width:${d.score}%"></i></div>
+      <ul class="parts">${d.parts.map(x => `<li><span>${x.label}</span><span class="v">${x.detail}</span><span class="pb"><i style="width:${Math.round(x.v*100)}%"></i></span></li>`).join('')}</ul>
+    </div>` : `<div class="drycard"><h3 style="display:flex;align-items:center;gap:8px">${dot(p)}${esc(p.who)}</h3><p class="empty">Not enough text messages to score (needs 10+).</p></div>`).join('')}</div>
+  </section>`;
+}
+
+const CH_METRICS = {first:'Texts first', msgs:'Messages sent', len:'Message length', reply:'Reply speed'};
+function changedHtml(A){
+  const ks = A.monthly.keys;
+  const opts = sel => ks.map(k => `<option value="${k}"${k === sel ? ' selected' : ''}>${fmtMonth(k)}</option>`).join('');
+  return `<section id="s-changed">
+    <div class="sec-head"><h2>You’ve changed</h2><p>How each person’s effort moves month by month. Pick a metric and a range. Months with too few messages are left as gaps.</p></div>
+    <div class="panel">
+      <div class="panel-head">
+        <div class="seg" role="group" aria-label="Metric">${Object.entries(CH_METRICS).map(([k,l]) => `<button type="button" data-metric="${k}" aria-pressed="${k === chMetric}">${l}</button>`).join('')}</div>
+        ${ks.length > 1 ? `<div class="range"><label for="chFrom">From</label><select id="chFrom">${opts(chRange.from)}</select><label for="chTo">to</label><select id="chTo">${opts(chRange.to)}</select></div>` : ''}
+      </div>
+      <div class="legend">${legend(A.sel)}</div>
+      <div class="chart" id="changed"></div>
+      <div class="callouts" id="chCallouts"></div>
+    </div>
+  </section>`;
+}
+function chValue(metric, q, M){
+  if (!q) return null;
+  if (metric === 'first') return M.starts >= 5 ? q.starts / M.starts * 100 : null;
+  if (metric === 'msgs') return q.n;
+  if (metric === 'len') return q.textMsgs >= 3 ? q.words / q.textMsgs : null;
+  if (metric === 'reply') return q.replies.length >= 3 ? median(q.replies) / 60000 : null;
+}
+function chAgg(metric, name, keys){
+  let starts = 0, tot = 0, n = 0, words = 0, tm = 0, rep = [], months = 0;
+  for (const k of keys){ const M = current.monthly.map.get(k); if (!M) continue; months++; const q = M.per.get(name); tot += M.starts; if (!q) continue; starts += q.starts; n += q.n; words += q.words; tm += q.textMsgs; rep = rep.concat(q.replies); }
+  if (metric === 'first') return tot ? starts / tot * 100 : null;
+  if (metric === 'msgs') return months ? n / months : null;
+  if (metric === 'len') return tm >= 3 ? words / tm : null;
+  if (metric === 'reply') return rep.length >= 3 ? median(rep) / 60000 : null;
+}
+const chFmt = (metric, v) => v == null ? '—' : metric === 'first' ? fmt1(v) + '%' : metric === 'msgs' ? fmt(v) + (v === 1 ? ' msg' : ' msgs') : metric === 'len' ? fmt1(v) + ' words' : fmtDur(v * 60000);
+function drawChanged(){
+  const host = $('#changed'); if (!host || !current) return;
+  host.querySelectorAll('svg').forEach(x => x.remove());
+  const A = current, ppl = A.sel, metric = chMetric;
+  const ks = A.monthly.keys.filter(k => k >= chRange.from && k <= chRange.to);
+  const series = ppl.map(p => ks.map(k => { const M = A.monthly.map.get(k); return M ? chValue(metric, M.per.get(p.who), M) : null; }));
+  const W = Math.max(300, host.clientWidth), H = 240, m = {l:48, r:12, t:12, b:28}, iw = W-m.l-m.r, ih = H-m.t-m.b;
+  const vals = series.flat().filter(v => v != null);
+  const ymax = metric === 'first' ? 100 : niceMax(Math.max(1, ...vals));
+  const X = i => m.l + (ks.length === 1 ? iw/2 : i/(ks.length-1)*iw), Y = v => m.t + ih - v/ymax*ih;
+  const svg = svgEl('svg', {viewBox:`0 0 ${W} ${H}`, height:H, role:'img', 'aria-label':`${CH_METRICS[metric]} by month`});
+  const g = svgEl('g', {class:'grid'});
+  for (let i = 0; i <= 4; i++){ const v = ymax*i/4, y = Y(v); g.appendChild(svgEl('line', {x1:m.l, x2:W-m.r, y1:y, y2:y})); const t = svgEl('text', {x:m.l-6, y:y+4, 'text-anchor':'end'}); t.textContent = metric === 'first' ? Math.round(v)+'%' : metric === 'reply' ? (v >= 60 ? fmt1(v/60)+'h' : Math.round(v)+'m') : fmt(v); g.appendChild(t); }
+  svg.appendChild(g);
+  const maxL = Math.max(2, Math.floor(iw/70)), step = Math.ceil(ks.length/maxL);
+  ks.forEach((k,i) => { if (i % step && i !== ks.length-1) return; if (i !== ks.length-1 && ks.length-1-i < step && i % step === 0 && i !== 0) return; const t = svgEl('text', {x:X(i), y:H-8, 'text-anchor': ks.length === 1 ? 'middle' : i === 0 ? 'start' : i === ks.length-1 ? 'end' : 'middle'}); t.textContent = fmtMonthShort(k); svg.appendChild(t); });
+  series.forEach((sr, si) => {
+    const col = color(ppl[si]); let d = '', pen = false;
+    sr.forEach((v,i) => { if (v == null){ pen = false; return; } d += (pen ? 'L' : 'M') + X(i).toFixed(1) + ',' + Y(v).toFixed(1); pen = true; });
+    if (d) svg.appendChild(svgEl('path', {d, fill:'none', stroke:col, 'stroke-width':2, 'stroke-linejoin':'round', 'stroke-linecap':'round'}));
+    sr.forEach((v,i) => { if (v != null && (ks.length <= 18 || i === sr.length-1)) svg.appendChild(svgEl('circle', {cx:X(i), cy:Y(v), r: i === sr.length-1 ? 4.5 : 3, fill:col, stroke:'var(--surface)', 'stroke-width':2})); });
+  });
+  const cross = svgEl('line', {y1:m.t, y2:m.t+ih, stroke:'var(--ink-3)', opacity:0}); svg.appendChild(cross);
+  const hit = svgEl('rect', {x:m.l-8, y:m.t, width:iw+16, height:ih, fill:'transparent'}); svg.appendChild(hit);
+  host.prepend(svg);
+  const tip = tipFor(host);
+  function move(ev){ const r = svg.getBoundingClientRect(), px = (ev.clientX - r.left)*(W/r.width);
+    const i = ks.length === 1 ? 0 : Math.min(ks.length-1, Math.max(0, Math.round((px-m.l)/iw*(ks.length-1))));
+    cross.setAttribute('x1', X(i)); cross.setAttribute('x2', X(i)); cross.setAttribute('opacity', .5);
+    tip.innerHTML = `<div>${fmtMonth(ks[i])}</div>` + ppl.map((p,si) => `<div class="row">${dot(p)}${esc(p.who)} <b>${chFmt(metric, series[si][i])}</b></div>`).join('');
+    placeTip(host, tip, X(i)*(r.width/W), ev.clientY - r.top); }
+  hit.addEventListener('pointermove', move); hit.addEventListener('pointerdown', move);
+  hit.addEventListener('pointerleave', () => { tip.hidden = true; cross.setAttribute('opacity', 0); });
+  // callouts
+  const co = $('#chCallouts'); const active = ks.filter(k => A.monthly.map.has(k));
+  if (active.length < 2){ co.innerHTML = `<p class="empty">Pick a range with at least two months of messages to compare early vs recent.</p>`; return; }
+  const k = Math.max(1, Math.min(3, Math.floor(active.length/3))), early = active.slice(0,k), late = active.slice(-k);
+  const lab = arr => arr.length === 1 ? fmtMonth(arr[0]) : fmtMonthShort(arr[0]).replace(/ '\d+$/,'') + '–' + fmtMonth(arr[arr.length-1]);
+  const verb = {first:'texted first', msgs:'sent', len:'wrote', reply:'replied in'}[metric];
+  co.innerHTML = ppl.map(p => { const a = chAgg(metric, p.who, early), b = chAgg(metric, p.who, late);
+    if (a == null || b == null) return `<div class="callout">${dot(p)}<b>${esc(p.who)}</b> not enough messages in one of the periods.</div>`;
+    const diff = b - a, better = metric === 'reply' ? diff < 0 : diff > 0;
+    const dtxt = metric === 'first' ? (diff >= 0 ? '+' : '−') + fmt1(Math.abs(diff)) + ' pts' : (a ? (diff >= 0 ? '+' : '−') + Math.round(Math.abs(diff)/a*100) + '%' : '');
+    const unit = metric === 'first' ? ' of the time' : metric === 'msgs' ? ' a month' : metric === 'len' ? ' per message' : '';
+    return `<div class="callout">${dot(p)}<b>${esc(p.who)}</b> ${verb} ${chFmt(metric,a)}${unit} in ${lab(early)} → <b>${chFmt(metric,b)}</b> in ${lab(late)} <span class="delta" title="${better ? 'more effort' : 'less effort'}">${better ? '▲' : '▼'} ${dtxt}</span></div>`; }).join('');
+}
+
+function hangingHtml(A){
+  const ppl = A.sel;
+  let lead = '';
+  if (A.people.length === 2){ const [a,b] = A.people; if (a.hanging !== b.hanging){ const more = a.hanging > b.hanging ? a : b, less = more === a ? b : a; lead = `<b>${esc(more.who)}</b> gets left hanging more: ${fmt(more.hanging)} messages with no reply, vs ${fmt(less.hanging)} for ${esc(less.who)}.`; } }
+  return `<section id="s-hanging">
+    <div class="sec-head"><h2>Left hanging</h2><p>Messages that got no reply before the chat went quiet for ${A.gapH}+ hours. Goodnights and byes don’t count. WhatsApp exports don’t include read receipts, so this can’t tell if a message was read.</p></div>
+    ${lead ? `<p class="lead-line">${lead}</p>` : ''}
+    <div class="hang-grid">${ppl.map(p => { const w = p.longestWait;
+      return `<div class="hangcard"><h3 style="display:flex;align-items:center;gap:8px">${dot(p)}${esc(p.who)}</h3>
+        <div class="row"><span>Messages that got no reply</span><b>${fmt(p.hanging)}<small>${fmt1(p.n ? p.hanging/p.n*100 : 0)} per 100 sent</small></b></div>
+        <div class="row"><span>Questions never answered</span><b>${fmt(p.qHanging)} of ${fmt(p.questions)}${p.questions ? `<small>${fmt1(p.qHanging/p.questions*100)}%</small>` : ''}</b></div>
+        ${w ? `<div class="wait">Longest wait for an answer: <b>${fmtDur(w.ms)}</b> after <q>${esc(w.text.length > 70 ? w.text.slice(0,67) + '…' : w.text)}</q> <span class="jump" data-day="${dayKey(w.t)}">${fmtDate(w.t)}</span></div>` : ''}
+      </div>`; }).join('')}</div>
+  </section>`;
+}
+
+function rolesOf(A){
+  const all = A.people, act = all.filter(p => p.n >= 20), pool = act.length >= 2 ? act : all;
+  const pick = (arr, fn) => arr.slice().sort((a,b) => fn(b) - fn(a));
+  const roles = [];
+  const add = (name, arr, fn, stat, blurb, low) => { const s = low ? arr.slice().sort((a,b) => fn(a) - fn(b)) : pick(arr, fn); if (!s.length || (!low && !(fn(s[0]) > 0))) return; roles.push({name, w:s[0], r:s[1], stat, blurb}); };
+  add('The lurker', all, p => p.n, p => `only ${fmt(p.n)} messages (${fmt1(p.n/A.total*100)}%)`, 'Reads everything, says almost nothing.', true);
+  add('Meme dumper', pool, p => p.media/p.n, p => `${fmt1(p.media/p.n*100)}% of their messages are media`, 'Communicates mainly in forwards and stickers.');
+  add('Conversation killer', pool, p => p.hanging/p.n, p => `${fmt1(p.hanging/p.n*100)} of every 100 messages end the chat`, 'Sends the message after which nobody replies.');
+  add('Dead chat reviver', all, p => p.revives, p => `revived the chat ${fmt(p.revives)} times after a day+ of silence`, 'Brings the group back from the dead.');
+  add('Hype person', pool, p => p.laughs/p.n, p => `${fmt1(p.laughs/p.n*100)} laughs per 100 messages`, 'Laughs at everything. Everyone’s favourite audience.');
+  return roles;
+}
+function rolesHtml(A){
+  const roles = rolesOf(A); A.roles = roles;
+  return `<section id="s-roles">
+    <div class="sec-head"><h2>Group chat roles</h2><p>Every group has these people. Worked out from everyone in the group${A.period !== 'all' ? ' in ' + esc(A.period) : ''}, not just the ones you’re comparing.</p></div>
+    <div class="roles">${roles.map(x => `<div class="role"><span class="rname">${x.name}</span><div class="who">${dot(x.w)}${esc(x.w.who)}</div><p><b style="color:var(--ink);font-weight:600">${x.stat(x.w)}</b></p><p>${x.blurb}</p>${x.r ? `<p style="font-size:.8rem">Runner-up: ${esc(x.r.who)}, ${x.stat(x.r)}</p>` : ''}</div>`).join('')}</div>
+  </section>`;
+}
+
+function showDay(key, scroll){
+  if (!dayKeys.length) return;
+  if (!dayIndex.has(key)){ const nxt = dayKeys.find(k => k >= key) || dayKeys[dayKeys.length-1]; key = nxt; }
+  dayShown = key;
+  const box = $('#dayMsgs'); if (!box) return;
+  const msgs = dayIndex.get(key) || [];
+  const right = current && current.people.length === 2 ? current.people[1].who : null;
+  let last = null, html = '';
+  for (const m of msgs){
+    const r = m.who === right ? ' r' : '';
+    if (m.who !== last){ const sl = current.slotByName.get(m.who) || 0; html += `<div class="who-line${r}"><span class="dot" style="background:${sl ? `var(--s${sl})` : 'var(--sother)'}"></span>${esc(m.who)}</div>`; last = m.who; }
+    const body = m.media ? `<i>${m.mediaType === 'media' ? 'Photo, video or sticker' : m.mediaType[0].toUpperCase() + m.mediaType.slice(1)} (not in export)</i>` : m.deleted ? '<i>This message was deleted</i>' : esc(m.text);
+    const tt = String(m.t.getHours() % 12 || 12) + ':' + String(m.t.getMinutes()).padStart(2,'0') + (m.t.getHours() < 12 ? 'am' : 'pm');
+    html += `<div class="msg${r}">${body}<time>${tt}</time></div>`;
+  }
+  box.innerHTML = html; box.scrollTop = 0;
+  $('#dayPick').value = key;
+  $('#dayCount').textContent = `${fmtKeyWd(key)} · ${fmt(msgs.length)} message${msgs.length === 1 ? '' : 's'}`;
+  const i = dayKeys.indexOf(key); $('#dayPrev').disabled = i <= 0; $('#dayNext').disabled = i >= dayKeys.length-1;
+  if (scroll) $('#s-day').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
 function legend(ppl){
   const shown = ppl.slice(0,8).map(p => `<span>${dot(p)}${esc(p.who)}</span>`);
-  if (ppl.length > 8) shown.push(`<span><span class="dot" style="background:var(--sother)"></span>Others (${ppl.length-8})</span>`);
+  const others = current ? current.people.length - ppl.length : 0;
+  if (others > 0) shown.push(`<span><span class="dot" style="background:var(--sother)"></span>Others (${others})</span>`);
   return shown.join('');
 }
 
 function awards(A){
-  const ppl = A.people;
+  const ppl = A.sel;
   const elig = ppl.filter(p => p.n >= 20);
   const pool = elig.length ? elig : ppl;
   const cards = []; A.awardList = [];
@@ -893,7 +1234,7 @@ function awards(A){
   card('Early bird', pool, p => pct(p.morning,p.n), p => `<b>${fmt1(pct(p.morning,p.n))}%</b> of messages 5–9am`, {none:'No one texts before 9am'});
   card('Most romantic', pool, p => pct(p.romance,p.n), p => `<b>${fmt1(pct(p.romance,p.n))}</b> love signals per 100 msgs`, {h:true, none:'No love words or heart emojis found'});
   card('Emoji heavy', pool, p => pct(p.emojis,p.n), p => `<b>${fmt1(pct(p.emojis,p.n))}</b> emojis per 100 msgs`);
-  card(A.people.some(p => p.photos) ? 'Most photos' : 'Most media shared', ppl, p => p.photos || p.media, p => p.photos ? `<b>${fmt(p.photos)}</b> photos` : `<b>${fmt(p.media)}</b> photos, videos & stickers`);
+  card(ppl.some(p => p.photos) ? 'Most photos' : 'Most media shared', ppl, p => p.photos || p.media, p => p.photos ? `<b>${fmt(p.photos)}</b> photos` : `<b>${fmt(p.media)}</b> photos, videos & stickers`);
   card('Double texter', ppl, p => p.doubles, p => `<b>${fmt(p.doubles)}</b> follow-ups with no reply`);
   card('Writes essays', pool, p => p.textMsgs ? p.words/p.textMsgs : null, p => `<b>${fmt1(p.textMsgs ? p.words/p.textMsgs : 0)}</b> words per message`);
   card('Laughs most', pool, p => pct(p.laughs,p.n), p => `<b>${fmt1(pct(p.laughs,p.n))}</b> laughs per 100 msgs`);
@@ -902,8 +1243,8 @@ function awards(A){
 }
 
 function peopleTable(A){
-  const max = A.people[0].n;
-  const rows = A.people.map(p => `<tr>
+  const max = Math.max(...A.sel.map(p => p.n));
+  const rows = A.sel.map(p => `<tr>
     <td><span class="namecell">${dot(p)}${esc(p.who)}</span></td>
     <td><span class="sharebar">${fmt(p.n)}<i style="width:${Math.max(2, p.n/max*90)}px;background:${color(p)}"></i></span></td>
     <td>${fmt1(p.n/A.total*100)}%</td>
@@ -922,11 +1263,11 @@ function peopleTable(A){
 }
 
 function dailyTable(A){
-  const ppl = A.people.slice(0,8);
-  const head = `<tr><th>Date</th><th>Total</th>${ppl.map(p => `<th>${esc(p.who)}</th>`).join('')}${A.people.length>8?'<th>Others</th>':''}</tr>`;
+  const ppl = A.sel, more = A.people.length > ppl.length;
+  const head = `<tr><th>Date</th><th>Total</th>${ppl.map(p => `<th>${esc(p.who)}</th>`).join('')}${more?'<th>Others</th>':''}</tr>`;
   const rows = A.keys.slice().reverse().map(k => { const d = A.days.get(k); let shown = 0;
     const cells = ppl.map(p => { const v = d.per.get(p.who)||0; shown += v; return `<td>${v ? fmt(v) : '·'}</td>`; }).join('');
-    return `<tr${k===A.busiest.key?' class="peak"':''}><td>${fmtKeyWd(k)}</td><td>${fmt(d.total)}</td>${cells}${A.people.length>8?`<td>${fmt(d.total-shown)}</td>`:''}</tr>`; }).join('');
+    return `<tr data-day="${k}"${k===A.busiest.key?' class="peak"':''}><td class="jump">${fmtKeyWd(k)}</td><td>${fmt(d.total)}</td>${cells}${more?`<td>${fmt(d.total-shown)}</td>`:''}</tr>`; }).join('');
   return `<table><thead>${head}</thead><tbody>${rows}</tbody></table>`;
 }
 
@@ -1005,18 +1346,23 @@ function drawTimeline(){
     const r = svg.getBoundingClientRect(); const px = (ev.clientX - r.left) * (W / r.width);
     const i = Math.min(list.length-1, Math.max(0, Math.floor((px - m.l)/bw))); const b = list[i];
     hl.setAttribute('x', m.l+i*bw); hl.setAttribute('opacity', .08);
-    const rows = A.people.slice(0,8).map((p,j) => b.per[j] ? `<div class="row">${dot(p)}${esc(p.who)} <b>${fmt(b.per[j])}</b></div>` : '').join('');
+    const rows = A.people.map((p,j) => p.slot && b.per[j] ? `<div class="row">${dot(p)}${esc(p.who)} <b>${fmt(b.per[j])}</b></div>` : '').join('');
     tip.innerHTML = `<div>${fmtB(b.u)}</div><div><b>${fmt(b.total)}</b> messages</div>${rows}`;
     placeTip(host, tip, (ev.clientX - r.left), ev.clientY - r.top);
   }
   hit.addEventListener('pointermove', move); hit.addEventListener('pointerdown', move);
   hit.addEventListener('pointerleave', () => { tip.hidden = true; hl.setAttribute('opacity',0); });
+  hit.style.cursor = 'pointer';
+  hit.addEventListener('click', ev => { const r = svg.getBoundingClientRect(); const px = (ev.clientX - r.left) * (W / r.width);
+    const i = Math.min(list.length-1, Math.max(0, Math.floor((px - m.l)/bw))); const b = list[i], nb = list[i+1];
+    const toKey = u => { const d = new Date(u); return d.getUTCFullYear()+'-'+String(d.getUTCMonth()+1).padStart(2,'0')+'-'+String(d.getUTCDate()).padStart(2,'0'); };
+    const lo = toKey(b.u), hi = nb ? toKey(nb.u) : '9999'; const k = dayKeys.find(x => x >= lo && x < hi); if (k) showDay(k, true); });
 }
 
 function drawHours(){
   const host = $('#hours'); if (!host) return;
   host.querySelectorAll('svg').forEach(s => s.remove());
-  const A = current, ppl = A.people.slice(0,8);
+  const A = current, ppl = A.sel;
   const W = Math.max(280, host.clientWidth), H = 220, m = {l:36, r:10, t:10, b:26};
   const iw = W-m.l-m.r, ih = H-m.t-m.b;
   const shares = ppl.map(p => p.hours.map(v => p.n ? v/p.n*100 : 0));
@@ -1097,12 +1443,39 @@ function run(keepScroll){
   const counts = new Map(); for (const m of parsed.msgs) counts.set(m.who, (counts.get(m.who)||0)+1);
   const slotOf = new Map([...counts.entries()].sort((a,b) => b[1]-a[1]).map(([w],i) => [w, i < 8 ? i+1 : 0]));
   const years = [...new Set(parsed.msgs.map(m => m.t.getFullYear()))].sort((a,b) => a-b);
-  if (period !== 'all' && !years.includes(+period)) period = 'all';
-  const msgs = period === 'all' ? parsed.msgs : parsed.msgs.filter(m => m.t.getFullYear() === +period);
+  if (period.y !== 'all' && !years.includes(+period.y)) period = {y:'all', m:'all'};
+  const monthsOf = y => [...new Set(parsed.msgs.filter(m => m.t.getFullYear() === +y).map(m => m.t.getMonth()))].sort((a,b) => a-b);
+  if (period.m !== 'all' && (period.y === 'all' || !monthsOf(period.y).includes(+period.m))) period.m = 'all';
+  let msgs = parsed.msgs;
+  if (period.y !== 'all') msgs = msgs.filter(m => m.t.getFullYear() === +period.y);
+  if (period.m !== 'all') msgs = msgs.filter(m => m.t.getMonth() === +period.m);
   current = analyze(msgs, +$('#gap').value, slotOf);
-  current.years = years.length > 1 ? years : []; current.period = period === 'all' ? 'all' : +period;
+  current.years = years; current.monthsOf = monthsOf; current.truncated = parsed.records >= 39000;
+  current.period = period.y === 'all' ? 'all' : period.m === 'all' ? String(period.y) : MONTHS[+period.m] + ' ' + period.y;
+  // people selection (groups): up to 5, stable colours
+  const everyone = current.people;
+  if (everyone.length > 2){
+    let sel = (selected || []).filter(n => everyone.some(p => p.who === n));
+    if (!sel.length) sel = everyone.slice(0,5).map(p => p.who);
+    const eff = everyone.filter(p => sel.includes(p.who)), used = new Set();
+    eff.forEach(p => { if (p.slot && !used.has(p.slot)) used.add(p.slot); else p.slot = 0; });
+    eff.forEach(p => { if (!p.slot) for (let k = 1; k <= 8; k++) if (!used.has(k)){ p.slot = k; used.add(k); break; } });
+    everyone.forEach(p => { if (!sel.includes(p.who)) p.slot = 0; });
+    current.sel = eff;
+  } else current.sel = everyone;
+  current.slotByName = new Map(everyone.map(p => [p.who, p.slot]));
+  // month series over the whole chat + day index
+  current.monthly = monthly(parsed.msgs, +$('#gap').value);
+  allMsgs = parsed.msgs; dayIndex = new Map();
+  for (const m of allMsgs){ const k = dayKey(m.t); let a = dayIndex.get(k); if (!a){ a = []; dayIndex.set(k, a); } a.push(m); }
+  dayKeys = [...dayIndex.keys()].sort();
+  { const ks = current.monthly.keys; let from = ks[0], to = ks[ks.length-1];
+    if (period.y !== 'all' && period.m === 'all'){ const inY = ks.filter(k => k.startsWith(period.y + '-')); from = inY[0]; to = inY[inY.length-1]; }
+    else if (period.m !== 'all'){ const target = period.y + '-' + String(+period.m+1).padStart(2,'0'); const i = ks.indexOf(target); to = target; from = ks[Math.max(0, i-11)]; }
+    chRange = {from, to}; }
   current.platform = parsed.platform; current.order = parsed.order;
-  $('#fileName').textContent = isSample ? 'Example chat: Tom & Jerry' : sourceName;
+  $('#fileName').textContent = isSample ? (sampleKind === 'group' ? 'Example group: Goa Gang' : 'Example chat: Tom & Jerry') : sourceName;
+  $('#exampleWhat').textContent = sampleKind === 'group' ? 'This is a made-up example group chat.' : 'This is a made-up example chat.';
   $('#fileMeta').textContent = `${fmt(parsed.msgs.length)} messages · ${fmtDate(parsed.msgs[0].t)} to ${fmtDate(parsed.msgs[parsed.msgs.length-1].t)}`;
   $('#exampleBanner').hidden = !isSample;
   $('#detected').textContent = ($('#dateorder').value === 'auto' ? 'Detected: ' : 'Using: ') + orderName(parsed.order) + ` · ${parsed.platform} export`;
@@ -1134,7 +1507,7 @@ async function loadFile(file){
       text = await file.text();
     }
     rawText = text; sourceName = file.name.replace(/\.(zip|txt)$/i,''); isSample = false;
-    $('#dateorder').value = 'auto'; period = 'all';
+    $('#dateorder').value = 'auto'; period = {y:'all', m:'all'}; selected = null; chMetric = 'first';
     showLoading(true, 'Counting messages…'); await tick();
     run();
   } catch (e){
@@ -1147,7 +1520,9 @@ const pickFile = () => $('#file').click();
 $('#dropzone').addEventListener('click', pickFile);
 $('#dropzone').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pickFile(); } });
 $('#homeBtn').addEventListener('click', () => showView('landing'));
-$('#exampleBtn').addEventListener('click', () => { rawText = makeSample(); sourceName = 'Example chat'; isSample = true; period = 'all'; $('#dateorder').value = 'auto'; run(); });
+$('#exampleBtn').addEventListener('click', () => { rawText = makeSample(); sourceName = 'Example chat'; isSample = true; sampleKind = 'duo'; period = {y:'all', m:'all'}; selected = null; chMetric = 'first'; $('#dateorder').value = 'auto'; run(); });
+$('#exampleGroupBtn').addEventListener('click', () => { rawText = makeGroupSample(); sourceName = 'Example group'; isSample = true; sampleKind = 'group'; period = {y:'all', m:'all'}; selected = null; chMetric = 'first'; $('#dateorder').value = 'auto'; run(); });
+$('#results').addEventListener('click', e => { const el = e.target.closest('[data-day]'); if (el) showDay(el.dataset.day, true); });
 $('#file').addEventListener('change', e => { const f = e.target.files[0]; if (f) loadFile(f); e.target.value = ''; });
 $('#gap').addEventListener('change', () => run(true));
 $('#dateorder').addEventListener('change', () => run(true));
@@ -1164,6 +1539,7 @@ function makeSample(){
   const A = 'Tom', M = 'Jerry';
   const lines = { [A]: ['hey','you up?','haha that’s so true','lol','kal ka plan kya hai','omw','sorry late ho gaya 😅','did you eat?','send the notes pls','that professor is something else','can’t believe the quiz tomorrow','ok done','hmm','bro the mess food today 😭','good morning ☀️','miss you','ok let me check','running to class','what time?','haha 😂','sounds good','this song >>> https://open.spotify.com/track/x','<Media omitted>','<Media omitted>','sure','love you','are you free after 6?','I’ll call you in 10','🤣🤣','wait what','nice nice'],
                  [M]: ['heyyy','finally!! 😍','hahaha stop','I was literally about to text you','did you finish the case?','no way 😂😂','good night, sweet dreams ❤️','omg yes','I’m so sleepy','ok but hear me out','miss youuu 🥺','love you too ❤️','<Media omitted>','<Media omitted>','<Media omitted>','lmao','what are we eating','call me when free','ugh deadlines','cutie 😘','hehe','see this https://instagram.com/p/x','yesss','nooo','I’ll be there by 8','This message was deleted','ok fine 🙄','🥰','why are you like this 😂','haan wait','sorry sorry 🙈'] };
+  const dryA = ['ok','hmm','k','haan','fine','👍','ok cool','hm','nice','ya'];
   const pad = n => String(n).padStart(2,'0');
   const out = ['03/11/25, 9:02 am - Messages and calls are end-to-end encrypted. Only people in this chat can read, listen to, or share them. Learn more.'];
   const start = new Date(2025,10,3);
@@ -1175,14 +1551,59 @@ function makeSample(){
     for (let s = 0; s < sessions; s++){
       const r = rnd();
       let mins = r < 0.12 ? 390 + rnd()*150 : r < 0.3 ? 540 + rnd()*300 : r < 0.72 ? 1080 + rnd()*300 : 1380 + rnd()*170;
-      let who = rnd() < (mins > 1300 ? 0.35 : 0.58) ? A : M;
+      const drift = d/170; let who = rnd() < (mins > 1300 ? 0.35 : 0.72 - 0.42*drift) ? A : M;
       const n = 6 + Math.floor(rnd()*(d === 76 ? 60 : 26));
       for (let i = 0; i < n && mins < 1439 + 150; i++){
         const tot = Math.floor(mins); const dd = new Date(day.getTime() + Math.floor(tot/1440)*DAY); const mm = tot % 1440;
         const h = Math.floor(mm/60), mi = mm % 60, h12 = h%12 === 0 ? 12 : h%12;
-        out.push(`${pad(dd.getDate())}/${pad(dd.getMonth()+1)}/${String(dd.getFullYear()).slice(2)}, ${h12}:${pad(mi)} ${h<12?'am':'pm'} - ${who}: ${pick(lines[who])}`);
+        const txt = who === A && rnd() < 0.12 + 0.4*drift ? pick(dryA) : pick(lines[who]);
+        out.push(`${pad(dd.getDate())}/${pad(dd.getMonth()+1)}/${String(dd.getFullYear()).slice(2)}, ${h12}:${pad(mi)} ${h<12?'am':'pm'} - ${who}: ${txt}`);
         mins += who === M ? rnd()*4 : 0.3 + rnd()*7;
         if (rnd() < (who === M ? 0.45 : 0.62)) who = who === A ? M : A;
+      }
+    }
+  }
+  return out.join('\n');
+}
+
+function makeGroupSample(){
+  let seed = 11; const rnd = () => (seed = (seed*16807) % 2147483647) / 2147483647;
+  const pick = a => a[Math.floor(rnd()*a.length)];
+  const people = [
+    {n:'Rahul', w:5, media:.06, dry:.08, laugh:.12},
+    {n:'Priya', w:4.2, media:.08, dry:.04, laugh:.3},
+    {n:'Aman', w:3, media:.38, dry:.12, laugh:.1},
+    {n:'Neha', w:2.4, media:.05, dry:.5, laugh:.05},
+    {n:'Kiran', w:1.8, media:.1, dry:.1, laugh:.15},
+    {n:'Vikram', w:1.1, media:.06, dry:.2, laugh:.08},
+    {n:'Sana', w:.25, media:.1, dry:.3, laugh:.05},
+  ];
+  const talk = ['so are we actually doing goa or not','who booked the tickets?','guys the train is at 6:40 am','I am NOT waking up at 5','bro','wait what happened','send the itinerary','can someone make a sheet','how much per head?','I’ll pay later pakka','which beach first?','anyone up?','what’s the plan for tonight','this is the best trip ever','who has the charger','okay listen','we need a better group name','did anyone check the weather','Baga or Anjuna?','my mom said yes!!','I’m in','count me out this time','let’s just decide by poll','reminder: pay Rahul','who ate my maggi','that was so much fun yesterday','we should do this every year'];
+  const laughs = ['hahahaha','😂😂😂','lmao','dead 💀','hahaha stop','🤣'];
+  const dry = ['ok','k','hmm','fine','ya','👍','haan','cool'];
+  const tot = people.reduce((a,p) => a + p.w, 0);
+  const who = () => { let r = rnd()*tot; for (const p of people){ r -= p.w; if (r <= 0) return p; } return people[0]; };
+  const pad = n => String(n).padStart(2,'0');
+  const out = ['15/10/25, 8:00 pm - Messages and calls are end-to-end encrypted. Only people in this chat can read, listen to, or share them. Learn more.',
+    '15/10/25, 8:00 pm - Rahul created group "Goa Gang: 2025"', '15/10/25, 8:01 pm - Rahul added Priya, Aman, Neha, Kiran, Vikram and Sana'];
+  const start = new Date(2025,9,16); let skip = 0;
+  for (let d = 0; d < 200; d++){
+    if (skip > 0){ skip--; continue; }
+    if (rnd() < 0.06){ skip = 2 + Math.floor(rnd()*4); continue; }
+    const day = new Date(start.getTime() + d*DAY);
+    const prevQuiet = d > 0 && rnd() < 0.2;
+    const sessions = 1 + Math.floor(rnd()*3) + (d === 58 ? 4 : 0);
+    for (let s = 0; s < sessions; s++){
+      let mins = 480 + rnd()*900;
+      const n = 4 + Math.floor(rnd()*(d === 58 ? 40 : 18));
+      let first = (s === 0 && (prevQuiet || d === 0)) ? (rnd() < 0.55 ? people[4] : who()) : who();
+      for (let i = 0; i < n && mins < 1439; i++){
+        const p = i === 0 ? first : (i === n-1 && rnd() < 0.45 ? people[2] : who());
+        const r = rnd();
+        const txt = r < p.media ? '<Media omitted>' : r < p.media + p.dry ? pick(dry) : r < p.media + p.dry + p.laugh ? pick(laughs) : pick(talk);
+        const tt = Math.floor(mins), h = Math.floor(tt/60), mi = tt % 60, h12 = h % 12 || 12;
+        out.push(`${pad(day.getDate())}/${pad(day.getMonth()+1)}/${String(day.getFullYear()).slice(2)}, ${h12}:${pad(mi)} ${h<12?'am':'pm'} - ${p.n}: ${txt}`);
+        mins += 0.5 + rnd()*6;
       }
     }
   }
